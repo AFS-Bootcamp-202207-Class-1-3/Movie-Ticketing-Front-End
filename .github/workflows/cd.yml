@@ -2,8 +2,8 @@ name: CD
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - master
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "afs-react" #Must be unique in Heroku
-          heroku_email: "gmszone@qq.com"
+          heroku_app_name: "back-end-movie-qa" #Must be unique in Heroku
+          heroku_email: "mama11@oocl.com"
         env:
           NODE_ENV: production
