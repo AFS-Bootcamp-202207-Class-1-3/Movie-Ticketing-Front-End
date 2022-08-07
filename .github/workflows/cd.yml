@@ -25,7 +25,7 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "back-end-movie-qa" #Must be unique in Heroku
+          heroku_app_name: "front-end-movie" #Must be unique in Heroku
           heroku_email: "mama11@oocl.com"
         env:
           NODE_ENV: production
