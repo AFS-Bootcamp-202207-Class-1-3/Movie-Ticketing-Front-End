@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Descriptions, Button, Spin, message } from "antd";
 import { useState, useEffect, useRef } from "react";
 import { getOrderDetail } from "../../api/OrderDetailApi";
