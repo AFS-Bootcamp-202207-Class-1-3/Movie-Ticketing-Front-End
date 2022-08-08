@@ -11,17 +11,18 @@ export default function OrderDetail() {
     movieSchedule: "",
     seatingArrangement: "",
     isPay: false,
-    Price: 0.0,
+    price: 0.0,
     userName: "",
   });
   const [loading, setLoading] = useState(true);
   const nav = useNavigate();
 
-  const {
+  /* const {
     state: { orderId },
   } = useLocation();
+  */
 
-  //const orderId = "xxx";
+  const orderId = "1";
 
   const orderIdRef = useRef(orderId);
 
@@ -33,6 +34,7 @@ export default function OrderDetail() {
     getOrderDetail(orderIdRef.current)
       .then((response) => {
         setOrderInfo(response.data);
+        console.log(response.data);
         setLoading(false);
       })
       .catch((response) => {
@@ -70,8 +72,8 @@ export default function OrderDetail() {
           title={<b style={{ fontSize: "200%" }}>Order Information</b>}
           column={1}
           style={{
-            width: "50%",
-            marginLeft: "25%",
+            width: "40%",
+            marginLeft: "30%",
           }}
         >
           <Descriptions.Item
@@ -106,7 +108,7 @@ export default function OrderDetail() {
           <Descriptions.Item
             label={<font className="OrderDetail-Item">Price </font>}
           >
-            <font className="OrderDetail-Item"> {orderInfo.Price}</font>
+            <font className="OrderDetail-Item"> {orderInfo.price}</font>
           </Descriptions.Item>
         </Descriptions>
         {payButton()}
