@@ -1,7 +1,7 @@
 import { Button, message, Spin } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getMovieDetail,postOrder } from "../../api/MovieDetail";
+import { getMovieDetail, postOrder } from "../../api/MovieDetail";
 import "./MovieDetail.css";
 
 function MovieDetail() {
