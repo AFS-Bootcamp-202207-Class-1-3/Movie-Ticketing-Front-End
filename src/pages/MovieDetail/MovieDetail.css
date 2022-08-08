@@ -6,7 +6,7 @@
 .con {
   height: 100%;
   width: 100%;
-  background:linear-gradient(#54bcbd,#fff81d);
+  background: linear-gradient(#54bcbd, #fff81d);
 }
 
 .upper-con {
@@ -25,30 +25,33 @@
   height: 300px;
   width: 200px;
 }
-
-.name{
-    font-size: 45px;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 30px;
+.post-con img {
+  height: 300px;
+  width: 200px;
+}
+.name {
+  font-size: 45px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 30px;
 }
 
-.attr{
-    font-size: 18px;
-    margin-bottom: 20px;
+.attr {
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
-.detail-text-con{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
+.detail-text-con {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
 }
 
-.detail-text{
-    font-size: 20px;
-    padding: 50px;
-    width: 80%;
-    height: 200px;
-    word-break: break-all;
+.detail-text {
+  font-size: 20px;
+  padding: 50px;
+  width: 80%;
+  height: 200px;
+  word-break: break-all;
 }

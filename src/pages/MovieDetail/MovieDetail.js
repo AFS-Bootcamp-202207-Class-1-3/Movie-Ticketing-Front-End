@@ -1,7 +1,7 @@
 import { Button, message, Spin } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getMovieDetail } from "../../api/MovieDetail";
+import { getMovieDetail,postOrder } from "../../api/MovieDetail";
 import "./MovieDetail.css";
 
 function MovieDetail() {
@@ -20,11 +20,11 @@ function MovieDetail() {
 
   useEffect(() => {
     getMovieDetail(1)
-      .then((response) => {
+      .then(response => {
         setMovieInfo(response.data);
         setLoading(false);
       })
-      .catch((response) => {
+      .catch(response => {
         message.error("获取电影信息失败，请重试");
         setLoading(false);
       });
@@ -32,22 +32,21 @@ function MovieDetail() {
 
   const clickToBuy = () => {
     // mvp的实现，之后不在这里生成CustomerOrder
-    // postOrder({
-    //   userId: "useId",
-    //   movieId: "movieId",
-    //   movieScheduleId: "movieScheduleId",
-    //   cinemaId: "cinemaId",
-    // })
-    //   .then((response) => {
-
-    //     nav(pathToOrderDeatail, response.data.orderId);
-    //     此处先传1用于展示
-    //     console.log('点击了')
-    // })
-    // .catch((response) => {
-    //     message.error("购票失败，请重试");
-    // });
-    nav(pathToOrderDeatail, { replace: false, state: { orderId: "1" } });
+    postOrder({
+      userId: "useId",
+      movieId: "movieId",
+      movieScheduleId: "movieScheduleId",
+      cinemaId: "cinemaId"
+    })
+      .then(response => {
+        nav(pathToOrderDeatail, response.data.orderId);
+        // 此处先传1用于展示
+        console.log("点击了");
+      })
+      .catch(response => {
+        message.error("购票失败，请重试");
+      });
+    // nav(pathToOrderDeatail, { replace: false, state: { orderId: "1" } });
   };
 
   return (
