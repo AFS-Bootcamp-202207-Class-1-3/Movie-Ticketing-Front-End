@@ -13,7 +13,7 @@ const items = [
 
 export default function BasicLayout() {
   return (
-    <Layout>
+    <Layout className="user-layout">
       <Header>
         <Menu theme="dark" mode="horizontal" items={items} />
       </Header>
