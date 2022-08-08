@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BaseApi = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "https://front-end-movie-qa.herokuapp.com",
 });
 
 export default BaseApi;

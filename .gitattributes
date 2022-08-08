@@ -3,3 +3,4 @@ cd.yml merge=ours
 ci.yml merge=ours
 .github merge=ours
 *.yml merge=ours
+BaseApi.js merge=ours
