@@ -1,4 +1,4 @@
-.gitattributes merge=ours
+.gitattribute merge=ours
 cd.yml merge=ours
 ci.yml merge=ours
 .github merge=ours
