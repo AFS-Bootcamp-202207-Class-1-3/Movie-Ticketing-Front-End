@@ -25,12 +25,9 @@ export default function OrderDetail() {
 
   const handlePutPay = function() {
     putPay({
-      // ordersIds: orderInfo.orderId,
-      // totalPrice: orderInfo.price,
-      // status: orderInfo.pay?1:0
-        "totalPrice": 100,
-        "ordersIds": "1",
-        "status": 1
+      ordersIds: orderInfo.orderId,
+      totalPrice: orderInfo.price,
+      status: orderInfo.pay ? 1 : 0
     })
       .then(response => {
         console.log(response.data);
