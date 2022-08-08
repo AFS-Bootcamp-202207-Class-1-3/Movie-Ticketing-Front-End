@@ -7,7 +7,14 @@ import "./MovieDetail.css";
 function MovieDetail() {
   const pathToOrderDeatail = "/User/OrderDetail";
   const [loading, setLoading] = useState(true);
-  const [movieInfo, setMovieInfo] = useState({});
+  const [movieInfo, setMovieInfo] = useState({
+    postUrl: "http://entpic.yue365.com/movie/202207/4725.jpg",
+    name: "魔女2",
+    introduction:
+      "电影《魔女2》为动作、科幻题材，由朴勋政导演执导，他也是该影片的编剧，影片的时长为137分钟。影片定档于2022年6月15日在韩国上映，时长为137分钟。该影片主要讲述秘密实验室组织中的非法人员，一直秘密追踪着一个女孩的下落。影片的一开始，女孩在一家实验室中苏醒，她不知道自己身处何处，也不晓得这实验室背后躲着的人是好人还是坏人，所以她飞速地逃离了那家实验室。",
+    releaseTime: "2022-08-02",
+    duration: 123
+  });
 
   const nav = useNavigate();
 
