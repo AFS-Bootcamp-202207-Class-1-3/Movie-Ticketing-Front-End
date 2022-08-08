@@ -9,7 +9,7 @@ export default function Bill() {
   //   const {
   //     state: { id },
   //   } = useLocation();
-  const orderId = "11111";
+  const orderId = "1";
   const [bill, setBill] = useState({});
   useEffect(() => {
     getBill(orderId).then((response) => {
@@ -21,7 +21,8 @@ export default function Bill() {
       <div className="order-info">
         <h1>Order Information</h1>
         <ul>
-          <li>Name: {bill.userName}</li>
+          <li>Cinema Name: {bill.cinemaName}</li>
+          <li>Name: {bill.movieName}</li>
           <li>Movie schedule: {bill.movieSchedule}</li>
           <li>Seating arrangement: {bill.seating}</li>
           <li>Payment Amount: {bill.price} rmb</li>
