@@ -1,0 +1,8 @@
+.OrderDetail{
+    background-color: rgb(166, 220, 241);
+    text-align: center;
+}
+
+.OrderDetail-Item{
+    font-size: 150%;
+}
