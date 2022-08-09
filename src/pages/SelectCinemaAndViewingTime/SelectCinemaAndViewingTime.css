@@ -1,24 +1,35 @@
-.main {
-    width: 1200px;
-    height: 800px;
-    margin: 0 auto;
-    padding: 20px;
+.movie-schedule-box {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-color: rgb(202, 230, 244);
+    margin: 0 auto;
+}
+
+.select-box {
+    display: flex;
+    justify-content: space-around;
 }
 
 .cinema-select {
-    height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 360px;
-    margin: 0 20px;
-    border: 1px solid;
+    height: 240px;
+
 }
 
 .viewtime-select {
-    height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 360px;
-    margin: 0 20px;
-    border: 1px solid;
+    height: 240px;
+
 }
 
+.my-button {
+    display: flex;
+    justify-content: center;
+}

@@ -1,61 +1,103 @@
-import { useState, useEffect, useRef } from "react";
-import { Select } from "antd";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Select, Button } from "antd";
+import { getCinemas, getStartTime, getSameViewingTime, saveOrder } from "../../api/SelectCinemaAndViewingTimeApi";
 import "../SelectCinemaAndViewingTime/SelectCinemaAndViewingTime.css"
 export default function SelectCinemaAndViewingTime() {
-    // const [loading, setLoading] = useState(true);
     const { Option } = Select;
-    const cinemaData = ['Cinema-1', 'Cinema-2'];
-    const roomData = {
-        'Cinema-1': ['Time-1', 'Time-2', 'Time-3'],
-        'Cinema-2': ['Time-4', 'Time-5', 'Time-6'],
-    };
-    const [rooms, setRooms] = useState(roomData[cinemaData[0]]);
-    const [secondRoom, setSecondRoom] = useState(roomData[cinemaData[0]][0]);
+    const [cinemaData, setCinemaData] = useState([]);
+    const [startTimeData, setStartTimeData] = useState([]);
 
+    const [choseMovieSchedule, setChoseMovieSchedule] = useState("");
+    const [choseCinema, setChoseCinema] = useState("");
+
+    //打通之前记得来这里改userId
+    const userId = "1";
+    const movieId = "1"
+
+
+    useEffect(() => {
+        getCinemas()
+            .then((response) => {
+                setCinemaData(response.data)
+            })
+    }, []);
+    const nav = useNavigate();
     const handleCinemaChange = (value) => {
-        setRooms(roomData[value]);
-        setSecondRoom(roomData[value][0]);
+        setChoseCinema(value);
+        getStartTime(value)
+            .then((response) => {
+                setStartTimeData(response.data)
+            })
     };
 
-    const onSecondRoomChange = (value) => {
-        setSecondRoom(value);
+    const onSecondStartTimeChange = (value) => {
+        setChoseMovieSchedule(value)
+    };
+
+    const ButtonTo = (path) => {
+        if (choseCinema === "" || choseMovieSchedule === "") {
+            alert("请先选择！");
+            return;
+        }
+
+        //点击确定后判断是否已经存在相同场次订单，如果是则跳转到对应订单详情页
+        const orderRequest = {
+            userId: userId,
+            cinemaId: choseCinema,
+            movieScheduleId: choseMovieSchedule,
+            movieId: movieId
+        }
+
+        getSameViewingTime(orderRequest).then((response) => {
+            console.log(response.data)
+            if (response.data === null || response.data === "") {
+                console.log("找不到已存在订单，进行保存",response.data)
+                saveOrder(orderRequest)
+            } else {
+                nav(path, { replace: true, state: { orderId: response.data } });
+            }
+        })
+
     };
 
     return (
-        <div className="main">
-            {/* <Spin spinning={loading}> */}
-            <div className="cinema-select">
-                <h1>Choose the cinema you like:</h1>
-                <Select
-                    defaultValue={cinemaData[0]}
-                    style={{
-                        width: 120,
-                    }}
-                    onChange={handleCinemaChange}
-                >
-                    {cinemaData.map((cinema) => (
-                        <Option key={cinema}>{cinema}</Option>
-                    ))}
-                </Select>
-            </div>
-            <div className="viewtime-select">
-                <h1>Choose your viewing time:</h1>
-                <div>
+        <div className="movie-schedule-box">
+            <div className="select-box">
+                <div className="cinema-select">
+                    <h1>Choose the cinema you like:</h1>
                     <Select
                         style={{
-                            width: 120,
+                            width: 200,
                         }}
-                        value={secondRoom}
-                        onChange={onSecondRoomChange}
+                        onChange={handleCinemaChange}
                     >
-                        {rooms.map((room) => (
-                            <Option key={room}>{room}</Option>
+                        {cinemaData.map((cinema) => (
+                            <Option key={cinema.id}>{cinema.name}</Option>
                         ))}
                     </Select>
                 </div>
+                <div className="viewtime-select">
+                    <h1>Choose your viewing time:</h1>
+                    <div>
+                        <Select
+                            style={{
+                                width: 200,
+                            }}
+                            onChange={onSecondStartTimeChange}
+                        >
+                            {startTimeData.map((startTime) => (
+                                <Option key={startTime.id}>{startTime.startTime}</Option>
+                            ))}
+                        </Select>
+                    </div>
+                </div>
             </div>
-
-            {/* </Spin> */}
+            <div className="my-button">
+                <Button type="primary" onClick={() => {
+                    ButtonTo("/User/Bill",);
+                }}>Confirm</Button>
+            </div>
         </div>
     )
 }
