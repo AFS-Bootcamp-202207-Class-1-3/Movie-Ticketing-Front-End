@@ -1,22 +1,6 @@
 import MovieList from "./MovieList";
 import MovieCarousel from "./MovieCarousel";
 import MoviePagination from "./MoviePagination";
-<<<<<<< HEAD
-import "../Home/Home.css"
-export default function Home() {
-    return (
-        <div className="container">
-            <MovieCarousel className="tags-panel" />
-            <div className="movies-list">
-                <MovieList className="movie-list" />
-                <div className="movies-pager">
-                    <MoviePagination className="list-pager" />
-                </div>
-            </div>
-        </div>
-    );
-}
-=======
 import "./Home.css";
 import { useEffect, useState } from "react";
 import { getMoviesInfo } from "../../api/HomeApi";
@@ -45,4 +29,3 @@ export default function Home() {
     </div>
   );
 }
->>>>>>> ccb085996238d2637c4d2256e7ab303ca5e6a7c9
