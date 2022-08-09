@@ -1,11 +1,11 @@
 import { Button, message, Spin } from "antd";
-import { useEffect, useState,useRef } from "react";
-import { useNavigate ,useLocation} from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { getMovieDetail, postOrder } from "../../api/MovieDetail";
 import "./MovieDetail.css";
 
 function MovieDetail() {
-  const pathToOrderDeatail = "/User/OrderDetail";
+  const pathToSelectCinemaAndViewingTime = "/User/SelectCinemaAndViewingTime";
   const [loading, setLoading] = useState(true);
   const [movieInfo, setMovieInfo] = useState({
     postUrl: "http://entpic.yue365.com/movie/202207/4725.jpg",
@@ -48,7 +48,7 @@ function MovieDetail() {
       cinemaId: "cinemaId",
     })
       .then((response) => {
-        nav(pathToOrderDeatail, { replace: false, state: { orderId: "1" } });
+        nav(pathToSelectCinemaAndViewingTime, { replace: false, state: { orderId: "1" } });
         // 此处先传1用于展示
         console.log("点击了");
       })
