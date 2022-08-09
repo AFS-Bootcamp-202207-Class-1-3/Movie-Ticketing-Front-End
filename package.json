@@ -18,7 +18,8 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
-    "yarn.lock": "^0.0.1-security"
+    "yarn.lock": "^0.0.1-security",
+    "dotenv-cli": "^6.0.0"
   },
   "scripts": {
     "start": "dotenv -e .env.dev react-scripts --max-old-space-size=2048 start",
