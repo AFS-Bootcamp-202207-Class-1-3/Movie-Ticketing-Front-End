@@ -1,5 +1,6 @@
 import Demo from "../pages/Demo/Demo";
 import OrderDetail from "../pages/OrderDetail/OrderDetail";
+import MovieDetail from "../pages/MovieDetail/MovieDetail";
 import Bill from "../pages/Bill/Bill";
 
 /*用法: 
@@ -22,6 +23,10 @@ const userRoutes = [
   {
     path: "OrderDetail",
     element: <OrderDetail />,
+  },
+  {
+    path: "MovieDetail",
+    element: <MovieDetail />,
   },
 ];
 

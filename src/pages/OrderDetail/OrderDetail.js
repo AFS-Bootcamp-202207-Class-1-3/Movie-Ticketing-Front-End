@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Descriptions, Button, Spin, message } from "antd";
 import { useState, useEffect, useRef } from "react";
 import { getOrderDetail } from "../../api/OrderDetailApi";
+import { putPay } from "../../api/PayApi";
 import "./OrderDetail.css";
 
 export default function OrderDetail() {
@@ -21,6 +22,21 @@ export default function OrderDetail() {
     state: { orderId },
   } = useLocation();
   */
+
+  const handlePutPay = function () {
+    putPay({
+      ordersIds: orderInfo.orderId,
+      totalPrice: orderInfo.price,
+      status: orderInfo.pay ? 1 : 0,
+    })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((response) => {
+        message.error("支付失败");
+        setLoading(false);
+      });
+  };
 
   const orderId = "1";
 
@@ -59,7 +75,7 @@ export default function OrderDetail() {
         Check Bill
       </Button>
     ) : (
-      <Button type="primary" onClick={() => {}} style={{ margin: "10px" }}>
+      <Button type="primary" onClick={handlePutPay} style={{ margin: "10px" }}>
         Pay now
       </Button>
     );
