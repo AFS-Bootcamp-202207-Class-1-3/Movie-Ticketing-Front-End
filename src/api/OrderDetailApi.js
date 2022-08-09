@@ -1,5 +1,4 @@
-import BaseApi from "./BaseApi";
-
+import axios from "axios";
 export function getOrderDetail(orderId) {
-  return BaseApi.get(`/order/${orderId}`);
+  return axios.get(`/api/order/${orderId}`);
 }
