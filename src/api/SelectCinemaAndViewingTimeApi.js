@@ -1,19 +1,18 @@
-import BaseApi from "./BaseApi";
-
+import axios from "axios";
 export function getCinemas() {
-    return BaseApi.get(`/cinema`);
+    return axios.get(`/api/cinema`);
 }
 
 export function getStartTime(id) {
-    return BaseApi.get(`/movieSchedule/cinema/${id}`);
+    return axios.get(`/api/movieSchedule/cinema/${id}`);
 }
 
 export function getSameViewingTime(orderRequest) {
     console.log("----", orderRequest)
-    return BaseApi.post(`/order/viewingTime`, orderRequest )
+    return axios.post(`/api/order/viewingTime`, orderRequest )
 }
 
 export function saveOrder(order){
     console.log(order)
-    return BaseApi.post(`/order`,order)
+    return axios.post(`/api/order`,order)
 }

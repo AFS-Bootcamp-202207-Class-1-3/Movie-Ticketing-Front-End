@@ -31,11 +31,11 @@ const userRoutes = [
   },
   {
     path: "Home",
-    component: Home,
+    element: <Home />,
   },
   {
     path: "SelectCinemaAndViewingTime",
-    component: SelectCinemaAndViewingTime,
+    element: <SelectCinemaAndViewingTime />,
   }
 ];
 

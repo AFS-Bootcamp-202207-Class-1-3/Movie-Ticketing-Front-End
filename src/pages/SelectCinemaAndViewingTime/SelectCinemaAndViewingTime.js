@@ -15,7 +15,6 @@ export default function SelectCinemaAndViewingTime() {
     const userId = "1";
     const movieId = "1"
 
-
     useEffect(() => {
         getCinemas()
             .then((response) => {
@@ -40,23 +39,16 @@ export default function SelectCinemaAndViewingTime() {
             alert("请先选择！");
             return;
         }
-
         //点击确定后判断是否已经存在相同场次订单，如果是则跳转到对应订单详情页
         const orderRequest = {
-            userId: userId,
+            userId: '1',
             cinemaId: choseCinema,
             movieScheduleId: choseMovieSchedule,
-            movieId: movieId
+            movieId: '1'
         }
-
         getSameViewingTime(orderRequest).then((response) => {
-            console.log(response.data)
-            if (response.data === null || response.data === "") {
-                console.log("找不到已存在订单，进行保存",response.data)
-                saveOrder(orderRequest)
-            } else {
-                nav(path, { replace: true, state: { orderId: response.data } });
-            }
+            saveOrder(orderRequest)
+            nav(path, { replace: true, state: { orderId: response.data } });
         })
 
     };
@@ -95,7 +87,7 @@ export default function SelectCinemaAndViewingTime() {
             </div>
             <div className="my-button">
                 <Button type="primary" onClick={() => {
-                    ButtonTo("/User/Bill",);
+                    ButtonTo("/User/OrderDetail");
                 }}>Confirm</Button>
             </div>
         </div>

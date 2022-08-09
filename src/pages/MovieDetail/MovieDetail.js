@@ -5,7 +5,7 @@ import { getMovieDetail, postOrder } from "../../api/MovieDetail";
 import "./MovieDetail.css";
 
 function MovieDetail() {
-  const pathToOrderDeatail = "/User/OrderDetail";
+  const pathToOrderDeatail = "/User/SelectCinemaAndViewingTime";
   const [loading, setLoading] = useState(true);
   const [movieInfo, setMovieInfo] = useState({
     postUrl: "http://entpic.yue365.com/movie/202207/4725.jpg",
