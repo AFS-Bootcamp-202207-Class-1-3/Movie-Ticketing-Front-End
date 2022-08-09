@@ -1,4 +1,4 @@
-import BaseApi from "./BaseApi";
+import axios from "axios";
 export const putPay = pay => {
-  return BaseApi.put("/pay",  pay );
+  return axios.put("/api/pay", pay);
 };
