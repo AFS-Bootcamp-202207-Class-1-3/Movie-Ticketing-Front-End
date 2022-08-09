@@ -1,9 +1,9 @@
-import BaseApi from "./BaseApi";
+import axios from "axios";
 
 export function getMovieDetail(movieId) {
-  return BaseApi.get(`/movie/${movieId}`);
+  return axios.get(`/api/movie/${movieId}`);
 }
 
 export function postOrder(movie){
-  return BaseApi.post(`/order`,movie);
+  return axios.post(`/api/order`,movie);
 }
