@@ -1,37 +1,37 @@
-import { Carousel } from 'antd';
-import React from 'react';
+import { Carousel } from "antd";
+import React from "react";
 
 export default function MovieCarousel() {
-    return (
+  return (
     <Carousel autoplay className="home-carousel">
-        <div>
+      <div>
         <img
-            alt="example"
-            src={require("./assets/movie04.jpg")}
-            className="carousel-img"
-          />
-        </div>
-        <div>
+          alt="example"
+          src={require("./assets/movie04.jpg")}
+          className="carousel-img"
+        />
+      </div>
+      <div>
         <img
-            alt="example"
-            src={require("./assets/movie01.jpg")}
-            className="carousel-img"
-          />
-        </div>
-        <div>
+          alt="example"
+          src={require("./assets/movie01.jpg")}
+          className="carousel-img"
+        />
+      </div>
+      <div>
         <img
-            alt="example"
-            src={require("./assets/movie05.jpg")}
-            className="carousel-img"
-          />
-        </div>
-        <div>
+          alt="example"
+          src={require("./assets/movie05.jpg")}
+          className="carousel-img"
+        />
+      </div>
+      <div>
         <img
-            alt="example"
-            src={require("./assets/movie03.jpg")}
-            className="carousel-img"
-          />
-        </div>
+          alt="example"
+          src={require("./assets/movie03.jpg")}
+          className="carousel-img"
+        />
+      </div>
     </Carousel>
   );
-};
+}

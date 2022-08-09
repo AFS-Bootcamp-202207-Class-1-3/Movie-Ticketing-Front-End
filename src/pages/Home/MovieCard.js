@@ -12,22 +12,22 @@ export default function MovieCard({ movieInfo }) {
         style={{
           width: 300,
         }}
-        cover={<img alt="moviephoto" src={ movieInfo.postUrl } />}
+        cover={<img alt="moviephoto" src={movieInfo.postUrl} />}
         actions={[
           <Button
-          type="link"
-          onClick={() => {
-            nav("/User/MovieDetail", {
-              replace: true,
-              state: { movieId: movieInfo.id },
-            });
-          }}
-        >
-          More Detail
-        </Button>
+            type="link"
+            onClick={() => {
+              nav("/User/MovieDetail", {
+                replace: true,
+                state: { movieId: movieInfo.id },
+              });
+            }}
+          >
+            More Detail
+          </Button>,
         ]}
       >
-        <Meta title={ movieInfo.name } description={ movieInfo.introduction } />
+        <Meta title={movieInfo.name} description={movieInfo.introduction} />
       </Card>
     </div>
   );
