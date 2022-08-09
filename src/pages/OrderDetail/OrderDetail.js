@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Descriptions, Button, Spin, message } from "antd";
 import { useState, useEffect, useRef } from "react";
 import { getOrderDetail } from "../../api/OrderDetailApi";
@@ -18,10 +18,9 @@ export default function OrderDetail() {
   const [loading, setLoading] = useState(true);
   const nav = useNavigate();
 
-  /* const {
+  const {
     state: { orderId },
   } = useLocation();
-  */
 
   const handlePutPay = function () {
     putPay({
@@ -37,8 +36,6 @@ export default function OrderDetail() {
         setLoading(false);
       });
   };
-
-  const orderId = "1";
 
   const orderIdRef = useRef(orderId);
 
