@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .tags-panel {
     border: 1px solid #e5e5e5;
     padding: 0 20px;
@@ -32,4 +33,28 @@
 
 .list-pager {
     list-style: none;
+=======
+.movie-home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.movie-home .home-carousel {
+    width: 80vw;
+    height: 450px;
+}
+
+.movie-list {
+    width: 80%;
+    margin: 30px;
+}
+
+.movie-home .movie-pagination{
+    margin: 20px;
+}
+
+.movie-home .home-carousel .carousel-img{
+    width: 80vw;
+    height: 450px;
+>>>>>>> ccb085996238d2637c4d2256e7ab303ca5e6a7c9
 }
