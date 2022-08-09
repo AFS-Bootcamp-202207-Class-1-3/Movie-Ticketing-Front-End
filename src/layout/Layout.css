@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
+  max-height: 65px;
   height: 10vh;
   max-height: 65px;
   min-height: 65px;
@@ -17,8 +18,7 @@
 .user-layout .ant-layout-content {
   display: flex;
   width: 80vw;
-  min-height: 600px;
-  height: 75vh;
+  min-height: 75vh;
   background-color: gainsboro;
 }
 
