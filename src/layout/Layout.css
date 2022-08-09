@@ -6,10 +6,11 @@
 .user-layout .ant-layout-header {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100vw;
   max-height: 65px;
   height: 10vh;
-  min-height: 65px;
+  max-height: 65px;
 }
 .user-layout .ant-layout-content {
   display: flex;
@@ -25,5 +26,52 @@
   align-items: center;
   min-height: 150px;
   background-color: #001529;
+  color: white;
+}
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80vw;
+  height: 100%;
+}
+.left-bar {
+  display: flex;
+  align-items: center;
+}
+.Logo {
+  margin-left: 5px;
+}
+.Logo img {
+  width: 28px;
+  height: 28px;
+}
+.Logo span {
+  display: inline-block;
+  margin-left: 15px;
+  font-size: 28px;
+  color: white;
+}
+.searchBar {
+  width: 350px;
+  height: 35px;
+}
+.right-bar {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  height: 100%;
+}
+.user {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.user .ant-avatar{
+  background-color: aliceblue;
+}
+.user-name {
+  display: block;
+  margin-left: 10px;
   color: white;
 }
