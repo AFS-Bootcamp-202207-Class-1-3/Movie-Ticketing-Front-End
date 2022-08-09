@@ -6,7 +6,7 @@
 .con {
   height: 100%;
   width: 100%;
-  background: linear-gradient(#54bcbd, #fff81d);
+  background: #ecfefe;
 }
 
 .upper-con {
@@ -39,6 +39,7 @@
 .attr {
   font-size: 18px;
   margin-bottom: 20px;
+  color: #0b0d0b;
 }
 
 .detail-text-con {
