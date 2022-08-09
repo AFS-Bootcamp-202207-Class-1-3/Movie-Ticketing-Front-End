@@ -3,13 +3,16 @@
   height: 100vh;
   align-items: center;
 }
+
 .user-layout .ant-layout-header {
   display: flex;
   align-items: center;
   width: 100vw;
   height: 10vh;
+  max-height: 65px;
   min-height: 65px;
 }
+
 .user-layout .ant-layout-content {
   display: flex;
   width: 80vw;
@@ -17,6 +20,7 @@
   height: 75vh;
   background-color: gainsboro;
 }
+
 .user-layout .ant-layout-footer {
   width: 100vw;
   height: 15vh;
