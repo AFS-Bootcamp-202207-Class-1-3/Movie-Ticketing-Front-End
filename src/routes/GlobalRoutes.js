@@ -15,11 +15,11 @@ export default function GlobalRoutes() {
           ))}
         </Route>
         <Route path={"/User"} element={<UserLayout />}>
-          {userRoutes.map(({ path, component }) => (
+          {userRoutes.map(({ path, element }) => (
             <Route
               key={path}
               path={path}
-              element={<UserAuthRoute component={component} />}
+              element={<UserAuthRoute>{element}</UserAuthRoute>}
             />
           ))}
         </Route>

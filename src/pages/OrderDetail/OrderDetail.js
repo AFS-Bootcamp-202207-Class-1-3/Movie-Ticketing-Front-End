@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Descriptions, Button, Spin, message } from "antd";
 import { useState, useEffect, useRef } from "react";
 import { getOrderDetail } from "../../api/OrderDetailApi";
@@ -11,34 +11,31 @@ export default function OrderDetail() {
     movieName: "",
     movieSchedule: "",
     seatingArrangement: "",
-    isPay: false,
+    pay: false,
     price: 0.0,
-    userName: ""
+    userName: "",
   });
   const [loading, setLoading] = useState(true);
   const nav = useNavigate();
 
-  /* const {
+  const {
     state: { orderId },
   } = useLocation();
-  */
 
-  const handlePutPay = function() {
+  const handlePutPay = function () {
     putPay({
       ordersIds: orderInfo.orderId,
       totalPrice: orderInfo.price,
-      status: orderInfo.pay ? 1 : 0
+      status: orderInfo.pay ? 1 : 0,
     })
-      .then(response => {
+      .then((response) => {
         console.log(response.data);
       })
-      .catch(response => {
+      .catch((response) => {
         message.error("支付失败");
         setLoading(false);
       });
   };
-
-  const orderId = "1";
 
   const orderIdRef = useRef(orderId);
 
@@ -48,23 +45,23 @@ export default function OrderDetail() {
 
   useEffect(() => {
     getOrderDetail(orderIdRef.current)
-      .then(response => {
+      .then((response) => {
         setOrderInfo(response.data);
         console.log(response.data);
         setLoading(false);
       })
-      .catch(response => {
+      .catch((response) => {
         message.error("获取订单信息失败，请重试");
         setLoading(false);
       });
   }, []);
 
-  const ButtonTo = path => {
+  const ButtonTo = (path) => {
     nav(path, { replace: true, state: { orderId: orderId } });
   };
 
   const payButton = () => {
-    return orderInfo.isPay ? (
+    return orderInfo.pay ? (
       <Button
         type="primary"
         onClick={() => {
@@ -89,7 +86,7 @@ export default function OrderDetail() {
           column={1}
           style={{
             width: "40%",
-            marginLeft: "30%"
+            marginLeft: "30%",
           }}
         >
           <Descriptions.Item
