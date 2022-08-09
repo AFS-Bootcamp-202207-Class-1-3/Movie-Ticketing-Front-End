@@ -12,8 +12,8 @@ export default function SelectCinemaAndViewingTime() {
     const [choseCinema, setChoseCinema] = useState("");
 
     //打通之前记得来这里改userId
-    const userId = "1";
-    const movieId = "1"
+    // const userId = "1";
+    // const movieId = "1"
 
     useEffect(() => {
         getCinemas()
