@@ -1,3 +1,4 @@
 .gitattributes merge=ours
 *.yml merge=ours
 BaseApi.js merge=ours
+setupProxy merge=ours

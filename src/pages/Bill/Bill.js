@@ -1,15 +1,15 @@
 import { getBill } from "../../api/BillApi";
-
+import { useLocation } from "react-router-dom";
 import "./Bill.css";
 import QRCode from "qrcode.react";
 import { useEffect, useState } from "react";
 // import { useLocation } from "react-router";
 
 export default function Bill() {
-  //   const {
-  //     state: { id },
-  //   } = useLocation();
-  const orderId = "1";
+  const {
+    state: { orderId },
+  } = useLocation();
+
   const [bill, setBill] = useState({});
   useEffect(() => {
     getBill(orderId).then((response) => {

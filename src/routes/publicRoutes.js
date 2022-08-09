@@ -1,7 +1,7 @@
 const publicRoutes = [
   /*{
         path: "xxx",
-        component: xxx,
+        element: <xxx/>,
 
     },*/
 ];

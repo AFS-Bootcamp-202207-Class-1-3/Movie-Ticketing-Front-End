@@ -1,4 +1,4 @@
-import BaseApi from "./BaseApi";
+import axios from "axios";
 export const getBill = (orderId) => {
-  return BaseApi.get(`/bills/${orderId}`);
+  return axios.get(`/api/bills/${orderId}`);
 };
