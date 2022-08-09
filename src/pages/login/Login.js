@@ -1,6 +1,6 @@
 import { login } from "../../api/login";
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Form, Input } from "antd";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Form, Input, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addLoginInfo } from "./LoginSlice";
@@ -14,15 +14,21 @@ function Login() {
       realName: values.username,
       password: values.password,
     };
-    login(request).then((response) => {
-      if (response.data.code === 200) {
-        console.log(response.data);
-        dispatch(addLoginInfo({ userInfo: response.data, loginStatus: true }));
-        nav(pathToHome);
-      } else {
-        alert("用户密码错误");
-      }
-    });
+    login(request)
+      .then((response) => {
+        if (response.data.code === 200) {
+          console.log(response.data);
+          dispatch(
+            addLoginInfo({ userInfo: response.data, loginStatus: true })
+          );
+          nav(pathToHome, { replace: true });
+        } else {
+          message.info("登陆异常");
+        }
+      })
+      .catch((err) => {
+        message.info("用户或密码错误");
+      });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -31,12 +37,17 @@ function Login() {
 
   return (
     <div className="login-box">
-      <div className="login-form">
-        <h2>账户密码登录</h2>
+      <div className="my-login-form">
+        <div className="logo">
+          <img src="assets/logo-black.svg" alt="this is logo" />
+          <span className="bussiness-name">TMovies</span>
+        </div>
+        <h2 className="login-title">账户密码登录</h2>
         <Form
           name="normal_login"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
+          className="login-form"
+          labelCol={{ span: 24 }}
+          wrapperCol={{ span: 24 }}
           initialValues={{ remember: true }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
@@ -46,7 +57,10 @@ function Login() {
             name="username"
             rules={[{ required: true, message: "请输入用户名!" }]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+            <Input
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              placeholder="Username"
+            />
           </Form.Item>
           <Form.Item
             name="password"
@@ -58,8 +72,13 @@ function Login() {
               placeholder="Password"
             />
           </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button">
+          <Form.Item className="last-item">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+              block
+            >
               登录
             </Button>
           </Form.Item>
