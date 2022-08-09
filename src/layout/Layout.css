@@ -9,12 +9,13 @@
   justify-content: center;
   width: 100vw;
   height: 65px;
+  max-height: 65px;
+  max-height: 65px;
 }
 .user-layout .ant-layout-content {
   display: flex;
   width: 80vw;
-  min-height: 600px;
-  height: 75vh;
+  min-height: 75vh;
   background-color: gainsboro;
 }
 .user-layout .ant-layout-footer {
@@ -66,7 +67,7 @@
   height: 100%;
   align-items: center;
 }
-.user .ant-avatar{
+.user .ant-avatar {
   background-color: aliceblue;
 }
 .user-name {

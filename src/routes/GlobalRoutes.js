@@ -10,8 +10,8 @@ export default function GlobalRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path={"/"} element={<BasicLayout />}>
-          {publicRoutes.map(({ path, component }) => (
-            <Route key={path} path={path} element={component} />
+          {publicRoutes.map(({ path, element }) => (
+            <Route key={path} path={path} element={element} />
           ))}
         </Route>
         <Route path={"/User"} element={<UserLayout />}>
