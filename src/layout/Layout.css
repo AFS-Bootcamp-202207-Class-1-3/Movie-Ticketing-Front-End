@@ -8,8 +8,7 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 10vh;
-  max-height: 65px;
+  height: 65px;
 }
 .user-layout .ant-layout-content {
   display: flex;
