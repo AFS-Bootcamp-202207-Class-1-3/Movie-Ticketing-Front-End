@@ -1,0 +1,35 @@
+.tags-panel {
+    border: 1px solid #e5e5e5;
+    padding: 0 20px;
+    margin-top: 40px;
+}
+
+.movie-list {
+    margin: -29px 0 20px -25px;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.movies-channel {
+    width: 1120px;
+    margin: auto;
+}
+
+.movies-panel {
+    margin-top: 40px;
+}
+
+.movies-list {
+    margin-top: 20px;
+}
+
+.movies-pager {
+    text-align: center;
+}
+
+.list-pager {
+    list-style: none;
+}

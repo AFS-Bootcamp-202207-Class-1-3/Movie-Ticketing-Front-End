@@ -1,0 +1,24 @@
+.main {
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(202, 230, 244);
+}
+
+.cinema-select {
+    height: 240px;
+    width: 360px;
+    margin: 0 20px;
+    border: 1px solid;
+}
+
+.viewtime-select {
+    height: 240px;
+    width: 360px;
+    margin: 0 20px;
+    border: 1px solid;
+}
+

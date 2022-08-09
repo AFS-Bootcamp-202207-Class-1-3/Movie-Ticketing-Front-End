@@ -1,7 +1,8 @@
 import Demo from "../pages/Demo/Demo";
 import OrderDetail from "../pages/OrderDetail/OrderDetail"
 import Bill from "../pages/Bill/Bill";
-
+import Home from "../pages/Home/Home";
+import SelectCinemaAndViewingTime from "../pages/SelectCinemaAndViewingTime/SelectCinemaAndViewingTime"
 /*用法: 
 添加到userRoutes里,格式:
 {
@@ -23,6 +24,14 @@ const userRoutes = [
     path: "OrderDetail",
     component: OrderDetail,
   },
+  {
+    path: "Home",
+    component: Home,
+  },
+  {
+    path: "SelectCinemaAndViewingTime",
+    component: SelectCinemaAndViewingTime,
+  }
 ];
 
 export default userRoutes;
