@@ -1,8 +1,9 @@
-.movie-home{
+.movie-home {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .movie-home .home-carousel {
     width: 80vw;
     height: 450px;
@@ -13,11 +14,11 @@
     margin: 30px;
 }
 
-.movie-home .movie-pagination{
+.movie-home .movie-pagination {
     margin: 20px;
 }
 
-.movie-home .home-carousel .carousel-img{
+.movie-home .home-carousel .carousel-img {
     width: 80vw;
     height: 450px;
 }
