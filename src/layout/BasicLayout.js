@@ -5,7 +5,7 @@ const { Header, Content, Footer } = Layout;
 
 export default function BasicLayout() {
   return (
-    <Layout>
+    <Layout className="user-layout">
       <Header></Header>
       <Content>
         <Outlet />
