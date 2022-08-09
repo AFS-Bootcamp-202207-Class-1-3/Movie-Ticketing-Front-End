@@ -8,7 +8,7 @@ const generateLabel = (path, itemName) => {
 };
 
 const items = [
-  { key: "Home", title: "Home", label: generateLabel("/", "Home") },
+  { key: "Home", title: "Home", label: generateLabel("/User/Home", "Home") },
 ];
 
 export default function BasicLayout() {
