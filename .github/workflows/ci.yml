@@ -29,4 +29,4 @@ jobs:
           heroku_app_name: "front-end-movie-qa" #Must be unique in Heroku
           heroku_email: "mama11@oocl.com"
         env:
-          CI_ENV: development
+          CI_ENV: QAtest
