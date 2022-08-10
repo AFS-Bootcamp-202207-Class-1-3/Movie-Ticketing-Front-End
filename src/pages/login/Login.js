@@ -22,15 +22,15 @@ function Login() {
     }
     return true;
   };
-  const loginMaintainTime = 15*60*1000;
+  const loginMaintainTime = 15 * 60 * 1000;
 
   const onFinish = (values) => {
     const request = {
       realName: values.username,
-      password: values.password
+      password: values.password,
     };
     login(request)
-      .then((response) => { 
+      .then((response) => {
         if (response.data.code === 200) {
           const user = {
             userInfo: response.data,

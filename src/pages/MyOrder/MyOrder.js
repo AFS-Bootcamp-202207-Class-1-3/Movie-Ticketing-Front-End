@@ -1,13 +1,19 @@
-import { useNavigate } from "react-router-dom";
-import { Table, Tag } from "antd";
-import React from "react";
+import {    useNavigate } from "react-router-dom";
+import { Table, Tag,Button } from "antd";
+import React ,{useState,useEffect}from "react";
 import MyOrderPagination from "./MyOrderPagination";
 import "./MyOrder.css";
+import { getMyOrderInfo } from "../../api/MyOrderApi";
 
 export default function MyOrder() {
-  // const [myOrderInfos, setMyOrderInfos] = useState([]);
+
+  const [myOrderInfos, setMyOrderInfos] = useState([]);
+  const [orderPageInfos, setOrderPageInfos] = useState({
+    pageNumber: 1,
+    pageSize: 10,
+  });
+  const [totalOrders, setTotalOrders] = useState(0);
   const pathToOrderDetail="/User/OrderDetail"
-  const originData = [];
 
   const nav = useNavigate();
 
@@ -16,45 +22,34 @@ export default function MyOrder() {
     nav(pathToOrderDetail, { replace: false, state: { orderId: "1"} });
   }
 
-  for (let i = 0; i < 5; i++) {
-    originData.push({
-      key: i.toString(),
-      user_id: i,
-      movie_name: `movie ${i}`,
-      order_id: `000000000000${i}`,
-      start_time: "2022/01/01",
-      price: "$200",
-      payment_status: "paid",
-      action: "order detail",
-    });
-  }
+  useEffect(() => {
+    getMyOrderInfo(orderPageInfos,"1").then((response) => {
+        console.log(response.data)
+      setMyOrderInfos(
+        
+        response.data.orderListResponses.map((order) => ({
+          ...order,
+          key: order.id,
+        }))
+      );
+      setTotalOrders(response.data.totalOrders);
 
-  for (let i = 5; i < 10; i++) {
-    originData.push({
-      key: i.toString(),
-      user_id: i,
-      movie_name: `movie ${i}`,
-      order_id: `00${i}`,
-      start_time: "2022/01/01",
-      price: "$200",
-      payment_status: "unpaid",
-      action: "order detail",
     });
-  }
+  }, [orderPageInfos]);
 
   const columns = [
     {
       title: "Movie Name",
-      dataIndex: "movie_name",
+      dataIndex: "name",
     },
     {
       title: "Order Id",
-      dataIndex: "order_id",
+      dataIndex: "id",
       ellipsis: true,
     },
     {
       title: "Start Time",
-      dataIndex: "start_time",
+      dataIndex: "startTime",
     },
     {
       title: "Price",
@@ -62,15 +57,15 @@ export default function MyOrder() {
     },
     {
       title: "Payment Status",
-      dataIndex: "payment_status",
-      render: (payment_status) => (
+      dataIndex: "isPay",
+      render: (isPay) => (
         <span>
           {
             <Tag
-              color={payment_status === "paid" ? "geekblue" : "green"}
-              key={payment_status}
+              color={isPay ? "geekblue" : "green"}
+              key={isPay}
             >
-              {payment_status}
+              {isPay ? "paid" : "unpaid"}
             </Tag>
           }
         </span>
@@ -79,15 +74,19 @@ export default function MyOrder() {
     {
       action: "Action",
       dataIndex: "action",
-      render: (text,item) => <a onClick={()=>clickToDetail(item)}>{text}</a>,
+      render: (text,item) => <Button onClick={()=>clickToDetail(item)}>{text}</Button>,
     },
   ];
 
   return (
     <div className="my-order-table">
       <h1>My Orders</h1>
-      <Table pagination={false} columns={columns} dataSource={originData} />
-      <MyOrderPagination />
+      <Table pagination={false} columns={columns} dataSource={myOrderInfos} />
+      <MyOrderPagination
+        totalOrders={totalOrders}
+        orderPageInfos={orderPageInfos}
+        setOrderPageInfos={setOrderPageInfos}
+      />
     </div>
   );
 }
