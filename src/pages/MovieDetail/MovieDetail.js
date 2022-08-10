@@ -1,11 +1,11 @@
 import { Button, message, Spin } from "antd";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getMovieDetail, postOrder } from "../../api/MovieDetail";
+import { useEffect, useState, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getMovieDetail } from "../../api/MovieDetail";
 import "./MovieDetail.css";
 
 function MovieDetail() {
-  const pathToOrderDeatail = "/User/OrderDetail";
+  const pathToSelectCinemaAndViewingTime = "/User/SelectCinemaAndViewingTime";
   const [loading, setLoading] = useState(true);
   const [movieInfo, setMovieInfo] = useState({
     postUrl: "http://entpic.yue365.com/movie/202207/4725.jpg",
@@ -17,9 +17,18 @@ function MovieDetail() {
   });
 
   const nav = useNavigate();
+  const {
+    state: { movieId },
+  } = useLocation();
+
+  const movieIdRef = useRef(movieId);
 
   useEffect(() => {
-    getMovieDetail(1)
+    movieIdRef.current = movieId;
+  }, [movieId]);
+
+  useEffect(() => {
+    getMovieDetail(movieId)
       .then((response) => {
         setMovieInfo(response.data);
         setLoading(false);
@@ -28,24 +37,24 @@ function MovieDetail() {
         message.error("获取电影信息失败，请重试");
         setLoading(false);
       });
-  }, []);
+  }, [movieId]);
 
   const clickToBuy = () => {
-    // mvp的实现，之后不在这里生成CustomerOrder
-    postOrder({
-      userId: "useId",
-      movieId: "movieId",
-      movieScheduleId: "movieScheduleId",
-      cinemaId: "cinemaId",
-    })
-      .then((response) => {
-        nav(pathToOrderDeatail, { replace: false, state: { orderId: "1" } });
-        // 此处先传1用于展示
-        console.log("点击了");
-      })
-      .catch((response) => {
-        message.error("购票失败，请重试");
-      });
+    // // mvp的实现，之后不在这里生成CustomerOrder
+    // postOrder({
+    //   userId: "useId",
+    //   movieId: "movieId",
+    //   movieScheduleId: "movieScheduleId",
+    //   cinemaId: "cinemaId",
+    // })
+    //   .then((response) => {
+    nav(pathToSelectCinemaAndViewingTime, { replace: false, state: { orderId: "1", movieId: movieId } });
+    // 此处先传1用于展示
+    // console.log("点击了");
+    // })
+    // .catch((response) => {
+    //   message.error("购票失败，请重试");
+    // });
     // nav(pathToOrderDeatail, { replace: false, state: { orderId: "1" } });
   };
 
