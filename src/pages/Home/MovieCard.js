@@ -22,7 +22,7 @@ export default function MovieCard({ movieInfo }) {
                 replace: true,
                 state: { movieId: movieInfo.id },
               });
-            }}
+            }}  
           />
         }
         actions={[
