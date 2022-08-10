@@ -8,11 +8,13 @@ export function getStartTime(id) {
 }
 
 export function getSameViewingTime(orderRequest) {
-    console.log("----", orderRequest)
-    return axios.post(`/api/order/viewingTime`, orderRequest )
+    return axios.post(`/api/order/viewingTime`, orderRequest)
 }
 
-export function saveOrder(order){
-    console.log(order)
-    return axios.post(`/api/order`,order)
+export function saveOrder(order) {
+    return axios.post(`/api/order`, order)
+}
+
+export function savePay(pay) {
+    return axios.post(`/api/pay`, pay)
 }

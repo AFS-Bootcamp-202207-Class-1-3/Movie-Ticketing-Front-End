@@ -12,19 +12,7 @@ export default function MovieCard({ movieInfo }) {
         style={{
           width: 300,
         }}
-        cover={
-          <img
-            alt="moviephoto"
-            src={movieInfo.postUrl}
-            style={{ cursor: "pointer" }}
-            onClick={() => {
-              nav("/User/MovieDetail", {
-                replace: true,
-                state: { movieId: movieInfo.id },
-              });
-            }}  
-          />
-        }
+        cover={<img alt="moviephoto" src={movieInfo.postUrl} />}
         actions={[
           <Button
             type="link"
