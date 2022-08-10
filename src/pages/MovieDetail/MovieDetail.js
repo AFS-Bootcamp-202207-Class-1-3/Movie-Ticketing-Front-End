@@ -54,12 +54,12 @@ function MovieDetail() {
             <div className="movie-attr">
               <div className="name movie-name">{movieInfo.name}</div>
               <div className="attr attr-time">
-                release time:{movieInfo.releaseTime}
+                Release Time: {movieInfo.releaseTime}
               </div>
               <div className="attr attr-duration">
-                duration:{movieInfo.duration}
+                Duration: {movieInfo.duration} min
               </div>
-              <div className="attr attr-types">{movieInfo.types}types:</div>
+              <div className="attr attr-types">Types: {movieInfo.types}</div>
               <Button type="primary" danger onClick={clickToBuy}>
                 click to buy
               </Button>
