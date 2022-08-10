@@ -1,7 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
-import { Input, Layout, Menu, Avatar } from "antd";
+// add input
+import { Layout, Menu, Avatar } from "antd";
 import "./Layout.css";
-const { Search } = Input;
+// const { Search } = Input;
 
 const { Header, Content, Footer } = Layout;
 
@@ -13,7 +14,7 @@ const items = [
   { key: "Home", title: "Home", label: generateLabel("/User/Home", "Home") },
 ];
 // Todo search movie by name
-const onSearch = value => console.log(value);
+// const onSearch = value => console.log(value);
 export default function BasicLayout() {
   return (
     <Layout className="user-layout">
@@ -28,7 +29,7 @@ export default function BasicLayout() {
           </div>
 
           <div className="searchBar">
-            <Search placeholder="" onSearch={onSearch} />
+            {/* <Search placeholder="" onSearch={onSearch} /> */}
           </div>
           <div className="right-bar">
             <div className="user">
