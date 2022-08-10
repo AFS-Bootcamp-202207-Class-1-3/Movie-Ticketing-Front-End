@@ -38,17 +38,16 @@ export default function OrderDetail() {
       });
   };
 
-  // const orderIdRef = useRef(orderId);
-
-  // useEffect(() => {
-  //   orderIdRef.current = orderId;
-  // }, [orderId]);
+  const orderIdRef = useRef(orderId);
 
   useEffect(() => {
-    getOrderDetail(orderId)
+    orderIdRef.current = orderId;
+  }, [orderId]);
+
+  useEffect(() => {
+    getOrderDetail(orderIdRef.current)
       .then((response) => {
         setOrderInfo(response.data);
-        console.log(response.data);
         setLoading(false);
       })
       .catch((response) => {
