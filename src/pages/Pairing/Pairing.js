@@ -1,17 +1,30 @@
-//import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import { getPairInfo } from "../../api/PairingApi";
 import { message } from "antd";
 import NoPartner from "./NoPartner";
 import HasPartner from "./HasPartner";
+import { useSelector } from "react-redux";
 
 const PageNumber = 1;
 const PageSize = 6;
 export default function Pairing() {
-  //const { state:{movieScheduleId,movieId,cinemaId}}=useLocation()
+  const {
+    state: { movieScheduleId, movieId, cinemaId },
+  } = useLocation();
 
-  const movieScheduleId = "1";
-  const userId = "1";
+  const { loginInfo } = useSelector((state) => {
+    return state.loginInfo;
+  });
+  const userId = loginInfo.userInfo.userId;
+
+  const movieScheduleIdRef = useRef(movieScheduleId);
+  const userIdRef = useRef(userId);
+  useEffect(() => {
+    movieScheduleIdRef.current = movieScheduleId;
+    userIdRef.current = userId;
+  }, [movieScheduleId, userId]);
+
   const [pairInfos, setPairInfos] = useState([]);
   const [pageInfo, setPageInfo] = useState({
     pageNumber: PageNumber,
@@ -20,7 +33,7 @@ export default function Pairing() {
   const [total, setTotal] = useState(0);
 
   const handlePairInfo = () => {
-    getPairInfo(pageInfo, userId, movieScheduleId)
+    getPairInfo(pageInfo, userIdRef.current, movieScheduleIdRef.current)
       .then((response) => {
         console.log(response.data);
         setPairInfos(response.data.customerResponses);
@@ -36,7 +49,7 @@ export default function Pairing() {
   useEffect(handlePairInfo, [pageInfo]);
 
   return isNaN(total) || total <= 0 ? (
-    <div>
+    <div className="no-pair-box">
       <NoPartner handlePairInfo={handlePairInfo} />
     </div>
   ) : (
@@ -47,6 +60,10 @@ export default function Pairing() {
         setPageInfo={setPageInfo}
         total={total}
         pairInfos={pairInfos}
+        movieScheduleId={movieScheduleId}
+        userId={userId}
+        movieId={movieId}
+        cinemaId={cinemaId}
       />
     </div>
   );

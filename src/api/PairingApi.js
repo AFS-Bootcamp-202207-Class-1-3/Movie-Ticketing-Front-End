@@ -9,3 +9,7 @@ export function getPairInfo(pageInfo, userId, movieScheduleId) {
     },
   });
 }
+
+export function postPairInfo(pairInfoRequest) {
+  return axios.post("/api/order/", pairInfoRequest);
+}

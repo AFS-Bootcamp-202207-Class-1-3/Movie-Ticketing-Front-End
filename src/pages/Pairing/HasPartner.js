@@ -1,14 +1,32 @@
 import PairingPagination from "./PairingPagination";
-import { Button, List, Avatar, Badge, Popconfirm, Affix } from "antd";
+import { Button, List, Avatar, Badge, Popconfirm, Affix, message } from "antd";
 import {
   ManOutlined,
   WomanOutlined,
   PlusCircleTwoTone,
   ReloadOutlined,
 } from "@ant-design/icons";
+import { postPairInfo } from "../../api/PairingApi";
+import { useNavigate } from "react-router-dom";
 export default function HasPartner(props) {
+  const { movieScheduleId, movieId, cinemaId, userId } = props;
+  const nav = useNavigate();
   const confirm = (pairInfo) => {
     //Todo
+    postPairInfo({
+      userId,
+      partnerId: pairInfo.id,
+      movieScheduleId,
+      movieId,
+      cinemaId,
+    })
+      .then((response) => {
+        const orderInfo = response.data;
+        nav("/User/OrderDetail", { state: { orderId: orderInfo.id } });
+      })
+      .catch(() => {
+        message.error("配对失败，请重试");
+      });
   };
   return (
     <div>
