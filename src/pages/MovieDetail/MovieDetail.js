@@ -1,7 +1,7 @@
 import { Button, message, Spin } from "antd";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { getMovieDetail, postOrder } from "../../api/MovieDetail";
+import { getMovieDetail } from "../../api/MovieDetail";
 import "./MovieDetail.css";
 
 function MovieDetail() {
@@ -40,22 +40,7 @@ function MovieDetail() {
   }, [movieId]);
 
   const clickToBuy = () => {
-    // mvp的实现，之后不在这里生成CustomerOrder
-    postOrder({
-      userId: "useId",
-      movieId: "movieId",
-      movieScheduleId: "movieScheduleId",
-      cinemaId: "cinemaId",
-    })
-      .then((response) => {
-        nav(pathToSelectCinemaAndViewingTime, { replace: false, state: { orderId: "1" } });
-        // 此处先传1用于展示
-        // console.log("点击了");
-      })
-      .catch((response) => {
-        message.error("购票失败，请重试");
-      });
-    // nav(pathToOrderDeatail, { replace: false, state: { orderId: "1" } });
+    nav(pathToSelectCinemaAndViewingTime, { replace: false, state: { orderId: "1", movieId: movieId } });
   };
 
   return (
@@ -69,12 +54,12 @@ function MovieDetail() {
             <div className="movie-attr">
               <div className="name movie-name">{movieInfo.name}</div>
               <div className="attr attr-time">
-                release time:{movieInfo.releaseTime}
+                Release Time: {movieInfo.releaseTime}
               </div>
               <div className="attr attr-duration">
-                duration:{movieInfo.duration}
+                Duration: {movieInfo.duration} min
               </div>
-              <div className="attr attr-types">types:{movieInfo.types}</div>
+              <div className="attr attr-types">Types: {movieInfo.types}</div>
               <Button type="primary" danger onClick={clickToBuy}>
                 click to buy
               </Button>
