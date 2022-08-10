@@ -5,7 +5,7 @@ import { message } from "antd";
 import NoPartner from "./NoPartner";
 import HasPartner from "./HasPartner";
 import { useSelector } from "react-redux";
-
+import user from "../../utils/memoryUtils";
 const PageNumber = 1;
 const PageSize = 6;
 export default function Pairing() {
@@ -13,10 +13,12 @@ export default function Pairing() {
     state: { movieScheduleId, movieId, cinemaId },
   } = useLocation();
 
-  const { loginInfo } = useSelector((state) => {
+  /*const { loginInfo } = useSelector((state) => {
     return state.loginInfo;
   });
-  const userId = loginInfo.userInfo.userId;
+  const userId = loginInfo.userInfo.userId;*/
+
+  const userId = user.user.userInfo.userInfo.userId;
 
   const movieScheduleIdRef = useRef(movieScheduleId);
   const userIdRef = useRef(userId);

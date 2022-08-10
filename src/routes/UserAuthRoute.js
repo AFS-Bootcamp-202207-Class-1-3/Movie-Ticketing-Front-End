@@ -1,14 +1,14 @@
 import { Navigate } from "react-router-dom";
-//import { useSelector } from "react-redux";
+import memoryUtils from "../utils/memoryUtils";
 export default function UserAuthRoute({ children }) {
-  /*const { loginInfo } = useSelector((state) => {
-    return state.loginInfo;
-  });*/
   const isLogin = () => {
     //判断是否登录
-    //return loginInfo.loginStatus;
+    const loginUser = memoryUtils.user;
+    const currentTime = new Date();
+    if (parseInt(currentTime - loginUser.date) > loginUser.expire) {
+      return false;
+    }
     return true;
   };
-
-  return isLogin() === true ? children : <Navigate to="/Login" replace />;
+  return isLogin() === true ? children : <Navigate to="/login" replace />;
 }

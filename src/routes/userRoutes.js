@@ -1,10 +1,12 @@
 import Demo from "../pages/Demo/Demo";
 import OrderDetail from "../pages/OrderDetail/OrderDetail";
-import MovieDetail from "../pages/MovieDetail/MovieDetail";
 import Bill from "../pages/Bill/Bill";
 import Home from "../pages/Home/Home";
+import MovieDetail from "../pages/MovieDetail/MovieDetail";
 import SelectCinemaAndViewingTime from "../pages/SelectCinemaAndViewingTime/SelectCinemaAndViewingTime";
 import Pairing from "../pages/Pairing/Pairing";
+import MyOrder from "../pages/MyOrder/MyOrder";
+
 /*用法: 
 添加到userRoutes里,格式:
 {
@@ -41,6 +43,10 @@ const userRoutes = [
   {
     path: "Pairing",
     element: <Pairing />,
+  },
+  {
+    path: "MyOrder",
+    element: <MyOrder />,
   },
 ];
 

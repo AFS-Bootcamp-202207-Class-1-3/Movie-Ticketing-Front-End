@@ -13,7 +13,8 @@ const generateLabel = (path, itemName) => {
 };
 
 const items = [
-  { key: "Home", title: "Home", label: generateLabel("/User/Home", "Home") }
+  { key: "Home", title: "Home",label: generateLabel("/User/Home", "Home") },
+  { key: "Orders", title: "Orders",label: generateLabel("/User/MyOrder", "Orders") }
 ];
 // Todo search movie by name
 // const onSearch = value => console.log(value);
