@@ -27,7 +27,7 @@ function Login() {
   const onFinish = (values) => {
     const request = {
       realName: values.username,
-      password: values.password,
+      password: values.password
     };
     login(request)
       .then((response) => { 

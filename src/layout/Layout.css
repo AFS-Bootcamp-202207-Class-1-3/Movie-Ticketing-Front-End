@@ -3,7 +3,9 @@
   min-height: 100vh;
   align-items: center;
 }
-
+.user-layout.ant-layout {
+  background-color: white;
+}
 .user-layout .ant-layout-header {
   display: flex;
   align-items: center;
@@ -19,7 +21,7 @@
   display: flex;
   width: 80vw;
   min-height: 75vh;
-  background-color: gainsboro;
+  background-color: white;
 }
 
 .user-layout .ant-layout-footer {
@@ -28,7 +30,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 150px;
+  height: 10%;
+  min-height: 30px;
   background-color: #001529;
   color: white;
 }
@@ -44,7 +47,11 @@
   display: flex;
   align-items: center;
 }
+.left-bar .ant-menu{
+  min-width: 100px;
+}
 .Logo {
+  min-width: 180px;
   margin-left: 5px;
 }
 .Logo img {
@@ -72,7 +79,7 @@
   height: 100%;
   align-items: center;
 }
-.user .ant-avatar{
+.user .ant-avatar {
   background-color: aliceblue;
 }
 .user-name {
