@@ -4,6 +4,7 @@ import MovieDetail from "../pages/MovieDetail/MovieDetail";
 import Bill from "../pages/Bill/Bill";
 import Home from "../pages/Home/Home";
 import SelectCinemaAndViewingTime from "../pages/SelectCinemaAndViewingTime/SelectCinemaAndViewingTime"
+import MyOrder from "../pages/MyOrder/MyOrder";
 /*用法: 
 添加到userRoutes里,格式:
 {
@@ -36,6 +37,10 @@ const userRoutes = [
   {
     path: "SelectCinemaAndViewingTime",
     element: <SelectCinemaAndViewingTime />,
+  },
+  {
+    path: "MyOrder",
+    element: <MyOrder />,
   }
 ];
 
