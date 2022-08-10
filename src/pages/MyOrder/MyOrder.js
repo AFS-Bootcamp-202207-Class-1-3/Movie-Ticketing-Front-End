@@ -1,17 +1,26 @@
-import { useState, useEffect } from "react";
-import { Table, Tag } from "antd";
-import React from "react";
+import {    useNavigate } from "react-router-dom";
+import { Table, Tag,Button } from "antd";
+import React ,{useState,useEffect}from "react";
 import MyOrderPagination from "./MyOrderPagination";
 import "./MyOrder.css";
 import { getMyOrderInfo } from "../../api/MyOrderApi";
 
 export default function MyOrder() {
+
   const [myOrderInfos, setMyOrderInfos] = useState([]);
   const [orderPageInfos, setOrderPageInfos] = useState({
     pageNumber: 1,
     pageSize: 10,
   });
   const [totalOrders, setTotalOrders] = useState(0);
+  const pathToOrderDetail="/User/OrderDetail"
+
+  const nav = useNavigate();
+
+  const clickToDetail=(item)=>{
+    //  跳转已实现，把1改成orderId可以跳转
+    nav(pathToOrderDetail, { replace: false, state: { orderId: "1"} });
+  }
 
   useEffect(() => {
     getMyOrderInfo(orderPageInfos,"1").then((response) => {
@@ -24,6 +33,7 @@ export default function MyOrder() {
         }))
       );
       setTotalOrders(response.data.totalOrders);
+
     });
   }, [orderPageInfos]);
 
@@ -60,6 +70,11 @@ export default function MyOrder() {
           }
         </span>
       ),
+    },
+    {
+      action: "Action",
+      dataIndex: "action",
+      render: (text,item) => <Button onClick={()=>clickToDetail(item)}>{text}</Button>,
     },
   ];
 

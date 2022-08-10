@@ -47,7 +47,11 @@
   display: flex;
   align-items: center;
 }
+.left-bar .ant-menu{
+  min-width: 100px;
+}
 .Logo {
+  min-width: 180px;
   margin-left: 5px;
 }
 .Logo img {
