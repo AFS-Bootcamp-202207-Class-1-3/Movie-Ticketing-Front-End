@@ -40,38 +40,7 @@ function MovieDetail() {
   }, [movieId]);
 
   const clickToBuy = () => {
-<<<<<<< HEAD
-    // mvp的实现，之后不在这里生成CustomerOrder
-    postOrder({
-      userId: "useId",
-      movieId: "movieId",
-      movieScheduleId: "movieScheduleId",
-      cinemaId: "cinemaId",
-    })
-      .then((response) => {
-        nav(pathToSelectCinemaAndViewingTime, { replace: false, state: { orderId: "1" } });
-      })
-      .catch((response) => {
-        message.error("购票失败，请重试");
-      });
-=======
-    // // mvp的实现，之后不在这里生成CustomerOrder
-    // postOrder({
-    //   userId: "useId",
-    //   movieId: "movieId",
-    //   movieScheduleId: "movieScheduleId",
-    //   cinemaId: "cinemaId",
-    // })
-    //   .then((response) => {
     nav(pathToSelectCinemaAndViewingTime, { replace: false, state: { orderId: "1", movieId: movieId } });
-    // 此处先传1用于展示
-    // console.log("点击了");
-    // })
-    // .catch((response) => {
-    //   message.error("购票失败，请重试");
-    // });
->>>>>>> eb3326cd61ddbb92866bc99c0a8e1a8133128e94
-    // nav(pathToOrderDeatail, { replace: false, state: { orderId: "1" } });
   };
 
   return (
