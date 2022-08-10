@@ -9,15 +9,14 @@ function Login() {
   const nav = useNavigate();
   const dispatch = useDispatch();
   const pathToHome = "/User/Home";
-  const onFinish = (values) => {
+  const onFinish = values => {
     const request = {
       realName: values.username,
-      password: values.password,
+      password: values.password
     };
     login(request)
-      .then((response) => {
+      .then(response => {
         if (response.data.code === 200) {
-          console.log(response.data);
           dispatch(
             addLoginInfo({ userInfo: response.data, loginStatus: true })
           );
@@ -26,13 +25,13 @@ function Login() {
           message.info("登陆异常");
         }
       })
-      .catch((err) => {
+      .catch(err => {
         message.info("用户或密码错误");
       });
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  const onFinishFailed = errorInfo => {
+    message.info("异常");
   };
 
   return (
