@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Table, Tag } from "antd";
 import React from "react";
 import MyOrderPagination from "./MyOrderPagination";
@@ -6,7 +6,15 @@ import "./MyOrder.css";
 
 export default function MyOrder() {
   // const [myOrderInfos, setMyOrderInfos] = useState([]);
+  const pathToOrderDetail="/User/OrderDetail"
   const originData = [];
+
+  const nav = useNavigate();
+
+  const clickToDetail=(item)=>{
+    //  跳转已实现，把1改成orderId可以跳转
+    nav(pathToOrderDetail, { replace: false, state: { orderId: "1"} });
+  }
 
   for (let i = 0; i < 5; i++) {
     originData.push({
@@ -59,10 +67,10 @@ export default function MyOrder() {
         <span>
           {
             <Tag
-              color={ payment_status === "paid" ? "geekblue" : "green" }
-              key={ payment_status }
+              color={payment_status === "paid" ? "geekblue" : "green"}
+              key={payment_status}
             >
-              { payment_status }
+              {payment_status}
             </Tag>
           }
         </span>
@@ -71,7 +79,7 @@ export default function MyOrder() {
     {
       action: "Action",
       dataIndex: "action",
-      render: (text) => <a>{ text }</a>,
+      render: (text,item) => <a onClick={()=>clickToDetail(item)}>{text}</a>,
     },
   ];
 
