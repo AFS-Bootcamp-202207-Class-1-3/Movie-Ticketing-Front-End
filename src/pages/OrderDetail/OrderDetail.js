@@ -29,7 +29,8 @@ export default function OrderDetail() {
       status: orderInfo.pay ? 1 : 0,
     })
       .then((response) => {
-        console.log(response.data);
+        message.success("支付成功");
+        nav("/User/Bill", { replace: false, state: { orderId: response.data.ordersIds } });
       })
       .catch((response) => {
         message.error("支付失败");
@@ -47,7 +48,6 @@ export default function OrderDetail() {
     getOrderDetail(orderIdRef.current)
       .then((response) => {
         setOrderInfo(response.data);
-        console.log(response.data);
         setLoading(false);
       })
       .catch((response) => {
