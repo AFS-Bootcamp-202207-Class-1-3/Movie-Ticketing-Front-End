@@ -1,0 +1,17 @@
+.my-order-table {
+    margin: 20px auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.my-order-table h1 {
+    text-align: center;
+    color: #586a78;
+    font-size: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+

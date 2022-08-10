@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Descriptions, Button, Spin, message } from "antd";
 import { useState, useEffect, useRef } from "react";
 import { getOrderDetail } from "../../api/OrderDetailApi";
-import { putPay } from "../../api/PayApi";
+import { putOrder } from "../../api/PayApi";
 import "./OrderDetail.css";
 
 export default function OrderDetail() {
@@ -13,26 +13,25 @@ export default function OrderDetail() {
     seatingArrangement: "",
     pay: false,
     price: 0.0,
-    userName: "",
+    userName: ""
   });
   const [loading, setLoading] = useState(true);
   const nav = useNavigate();
 
   const {
-    state: { orderId },
+    state: { orderId }
   } = useLocation();
 
-  const handlePutPay = function () {
-    putPay({
-      ordersIds: orderInfo.orderId,
-      totalPrice: orderInfo.price,
-      status: orderInfo.pay ? 1 : 0,
-    })
-      .then((response) => {
+  const handlePutPay = function() {
+    putOrder(orderInfo.orderId)
+      .then(response => {
         message.success("支付成功");
-        nav("/User/Bill", { replace: false, state: { orderId: response.data.ordersIds } });
+        nav("/User/Bill", {
+          replace: false,
+          state: { orderId: response.data.id }
+        });
       })
-      .catch((response) => {
+      .catch(response => {
         message.error("支付失败");
         setLoading(false);
       });
@@ -46,17 +45,17 @@ export default function OrderDetail() {
 
   useEffect(() => {
     getOrderDetail(orderIdRef.current)
-      .then((response) => {
+      .then(response => {
         setOrderInfo(response.data);
         setLoading(false);
       })
-      .catch((response) => {
+      .catch(response => {
         message.error("获取订单信息失败，请重试");
         setLoading(false);
       });
   }, []);
 
-  const ButtonTo = (path) => {
+  const ButtonTo = path => {
     nav(path, { replace: true, state: { orderId: orderId } });
   };
 
@@ -72,7 +71,11 @@ export default function OrderDetail() {
         Check Bill
       </Button>
     ) : (
-      <Button type="primary" onClick={handlePutPay} style={{ margin: "10px" }}>
+      <Button
+        type="primary"
+        onClick={handlePutPay}
+        style={{ margin: "10px", width: "200px" }}
+      >
         Pay now
       </Button>
     );
@@ -86,7 +89,7 @@ export default function OrderDetail() {
           column={1}
           style={{
             width: "40%",
-            marginLeft: "30%",
+            marginLeft: "30%"
           }}
         >
           <Descriptions.Item

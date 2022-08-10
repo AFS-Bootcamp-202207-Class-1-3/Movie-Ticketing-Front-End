@@ -7,28 +7,21 @@ export default function MovieCarousel() {
       <div>
         <img
           alt="example"
-          src={require("./assets/movie04.jpg")}
+          src={require("./assets/movie1.png")}
           className="carousel-img"
         />
       </div>
       <div>
         <img
           alt="example"
-          src={require("./assets/movie01.jpg")}
+          src={require("./assets/movie2.png")}
           className="carousel-img"
         />
       </div>
       <div>
         <img
           alt="example"
-          src={require("./assets/movie05.jpg")}
-          className="carousel-img"
-        />
-      </div>
-      <div>
-        <img
-          alt="example"
-          src={require("./assets/movie03.jpg")}
+          src={require("./assets/movie3.png")}
           className="carousel-img"
         />
       </div>
