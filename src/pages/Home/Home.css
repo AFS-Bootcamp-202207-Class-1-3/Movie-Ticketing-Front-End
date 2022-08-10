@@ -25,3 +25,8 @@
 .movie-card .ant-card-cover {
     cursor: pointer;
 }
+.movie-card:hover{
+    transform: translateY(-5px);
+	transition: .5s all;
+	box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+}
