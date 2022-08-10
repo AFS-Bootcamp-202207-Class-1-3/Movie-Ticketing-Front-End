@@ -29,7 +29,8 @@ export default function OrderDetail() {
       status: orderInfo.pay ? 1 : 0,
     })
       .then((response) => {
-        console.log(response.data);
+        message.success("支付成功");
+        nav("/User/Bill", { replace: false, state: { orderId: response.data.ordersIds } });
       })
       .catch((response) => {
         message.error("支付失败");
@@ -37,14 +38,14 @@ export default function OrderDetail() {
       });
   };
 
-  const orderIdRef = useRef(orderId);
+  // const orderIdRef = useRef(orderId);
+
+  // useEffect(() => {
+  //   orderIdRef.current = orderId;
+  // }, [orderId]);
 
   useEffect(() => {
-    orderIdRef.current = orderId;
-  }, [orderId]);
-
-  useEffect(() => {
-    getOrderDetail(orderIdRef.current)
+    getOrderDetail(orderId)
       .then((response) => {
         setOrderInfo(response.data);
         console.log(response.data);

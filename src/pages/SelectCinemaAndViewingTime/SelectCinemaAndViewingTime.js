@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Select, Button } from "antd";
-import { getCinemas, getStartTime, getSameViewingTime, saveOrder } from "../../api/SelectCinemaAndViewingTimeApi";
+import { getCinemas, getStartTime, getSameViewingTime, saveOrder, savePay } from "../../api/SelectCinemaAndViewingTimeApi";
 import "../SelectCinemaAndViewingTime/SelectCinemaAndViewingTime.css"
+import { useLocation } from "react-router-dom";
 export default function SelectCinemaAndViewingTime() {
     const { Option } = Select;
     const [cinemaData, setCinemaData] = useState([]);
     const [startTimeData, setStartTimeData] = useState([]);
-
-    const [choseMovieSchedule, setChoseMovieSchedule] = useState("");
-    const [choseCinema, setChoseCinema] = useState("");
-
-    //打通之前记得来这里改userId
-    // const userId = "1";
-    // const movieId = "1"
+    const [choseMovieSchedule, setChoseMovieSchedule] = useState(1);
+    const [choseCinema, setChoseCinema] = useState(1);
+    const {
+        state: { movieId },
+    } = useLocation();
 
     useEffect(() => {
         getCinemas()
@@ -44,13 +43,19 @@ export default function SelectCinemaAndViewingTime() {
             userId: '1',
             cinemaId: choseCinema,
             movieScheduleId: choseMovieSchedule,
-            movieId: '1'
+            movieId: movieId
         }
         getSameViewingTime(orderRequest).then((response) => {
             saveOrder(orderRequest)
+            const requestPayBody = {
+                ordersIds: response.data,
+                //TODO 这里需要修改
+                totalPrice: 1000.0,
+                status: 0
+            }
+            savePay(requestPayBody)
             nav(path, { replace: true, state: { orderId: response.data } });
         })
-
     };
 
     return (

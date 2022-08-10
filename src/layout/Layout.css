@@ -9,8 +9,8 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 65px;
   max-height: 65px;
+  height: 10vh;
   max-height: 65px;
   min-height: 65px;
 }
@@ -72,7 +72,7 @@
   height: 100%;
   align-items: center;
 }
-.user .ant-avatar {
+.user .ant-avatar{
   background-color: aliceblue;
 }
 .user-name {
