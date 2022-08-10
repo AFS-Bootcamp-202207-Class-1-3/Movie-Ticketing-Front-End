@@ -9,10 +9,12 @@ export default function MovieCard({ movieInfo }) {
   return (
     <div className="movie-card">
       <Card
-        style={{
-          width: 300,
-        }}
-        cover={<img alt="moviephoto" src={movieInfo.postUrl} />}
+        cover={<img alt="moviephoto" src={movieInfo.postUrl} onClick={() => {
+          nav("/User/MovieDetail", {
+            replace: true,
+            state: { movieId: movieInfo.id },
+          });
+        }} />}
         actions={[
           <Button
             type="link"

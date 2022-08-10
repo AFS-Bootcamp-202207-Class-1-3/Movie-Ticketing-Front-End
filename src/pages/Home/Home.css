@@ -22,3 +22,6 @@
     width: 80vw;
     height: 450px;
 }
+.movie-card .ant-card-cover {
+    cursor: pointer;
+}
