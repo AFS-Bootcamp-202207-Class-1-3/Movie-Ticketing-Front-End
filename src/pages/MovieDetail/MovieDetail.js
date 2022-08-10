@@ -49,8 +49,6 @@ function MovieDetail() {
     })
       .then((response) => {
         nav(pathToSelectCinemaAndViewingTime, { replace: false, state: { orderId: "1" } });
-        // 此处先传1用于展示
-        console.log("点击了");
       })
       .catch((response) => {
         message.error("购票失败，请重试");
@@ -69,12 +67,12 @@ function MovieDetail() {
             <div className="movie-attr">
               <div className="name movie-name">{movieInfo.name}</div>
               <div className="attr attr-time">
-                release time:{movieInfo.releaseTime}
+                Release Time: {movieInfo.releaseTime}
               </div>
               <div className="attr attr-duration">
-                duration:{movieInfo.duration}
+                Duration: {movieInfo.duration} min
               </div>
-              <div className="attr attr-types">{movieInfo.types}types:</div>
+              <div className="attr attr-types">Types: {movieInfo.types}</div>
               <Button type="primary" danger onClick={clickToBuy}>
                 click to buy
               </Button>
