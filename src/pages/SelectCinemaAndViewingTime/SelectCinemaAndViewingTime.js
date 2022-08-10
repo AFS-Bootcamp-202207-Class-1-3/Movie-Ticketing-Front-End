@@ -8,6 +8,7 @@ import {
 } from "../../api/SelectCinemaAndViewingTimeApi";
 import "../SelectCinemaAndViewingTime/SelectCinemaAndViewingTime.css";
 import { useLocation } from "react-router-dom";
+import memoryUtils from "../../utils/memoryUtils";
 export default function SelectCinemaAndViewingTime() {
   const { Option } = Select;
   const [cinemaData, setCinemaData] = useState([]);
@@ -17,7 +18,7 @@ export default function SelectCinemaAndViewingTime() {
   const {
     state: { movieId },
   } = useLocation();
-
+  const userId = memoryUtils.user.userInfo.userId;
   useEffect(() => {
     getCinemas().then((response) => {
       setCinemaData(response.data);
@@ -42,7 +43,7 @@ export default function SelectCinemaAndViewingTime() {
     }
     //点击确定后判断是否已经存在相同场次订单，如果是则跳转到对应订单详情页
     const orderRequest = {
-      userId: "1",
+      userId: userId,
       cinemaId: choseCinema,
       movieScheduleId: choseMovieSchedule,
       movieId: movieId,

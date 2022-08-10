@@ -4,21 +4,21 @@ import { getPairInfo } from "../../api/PairingApi";
 import { message } from "antd";
 import NoPartner from "./NoPartner";
 import HasPartner from "./HasPartner";
-import { useSelector } from "react-redux";
-import user from "../../utils/memoryUtils";
+// import { useSelector } from "react-redux";
+import memoryUtils from "../../utils/memoryUtils";
 const PageNumber = 1;
 const PageSize = 6;
 export default function Pairing() {
   const {
-    state: { movieScheduleId, movieId, cinemaId },
+    state: { movieScheduleId, movieId, cinemaId }
   } = useLocation();
 
-  /*const { loginInfo } = useSelector((state) => {
-    return state.loginInfo;
-  });
-  const userId = loginInfo.userInfo.userId;*/
-
-  const userId = user.user.userInfo.userInfo.userId;
+  // const { loginInfo } = useSelector(state => {
+  //   return state.loginInfo;
+  // });
+  // const userId = loginInfo.userInfo.userId;
+  // console.log(userId);
+  const userId = memoryUtils.user.userInfo.userId;
 
   const movieScheduleIdRef = useRef(movieScheduleId);
   const userIdRef = useRef(userId);
@@ -30,14 +30,13 @@ export default function Pairing() {
   const [pairInfos, setPairInfos] = useState([]);
   const [pageInfo, setPageInfo] = useState({
     pageNumber: PageNumber,
-    pageSize: PageSize,
+    pageSize: PageSize
   });
   const [total, setTotal] = useState(0);
 
   const handlePairInfo = () => {
     getPairInfo(pageInfo, userIdRef.current, movieScheduleIdRef.current)
-      .then((response) => {
-        console.log(response.data);
+      .then(response => {
         setPairInfos(response.data.customerResponses);
         setTotal(response.data.totalCustomers);
       })

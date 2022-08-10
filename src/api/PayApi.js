@@ -1,4 +1,4 @@
 import axios from "axios";
-export const putPay = pay => {
-  return axios.put("/api/pay", pay);
+export const putOrder = (orderId) => {
+  return axios.put(`/api/order/${orderId}`);
 };

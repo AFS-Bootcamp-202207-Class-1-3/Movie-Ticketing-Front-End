@@ -16,26 +16,31 @@ function Login() {
   const isLogin = () => {
     //判断是否登录
     const loginUser = memoryUtils.user;
-    const currentTime = new Date().getTime();
-    if (parseInt(currentTime) - parseInt(loginUser.date) > loginUser.expire) {
+    console.log(loginUser)
+    const userEmpty = JSON.stringify(loginUser) === "{}";
+    const currentTime = new Date();
+    if (
+      userEmpty ||
+      parseInt(currentTime - loginUser.date) > loginUser.expire
+    ) {
       return false;
     }
     return true;
   };
-  const loginMaintainTime = 15 * 60 * 1000;
+  const loginMaintainTime = 60 * 60 * 1000;
 
-  const onFinish = (values) => {
+  const onFinish = values => {
     const request = {
       realName: values.username,
-      password: values.password,
+      password: values.password
     };
     login(request)
-      .then((response) => {
+      .then(response => {
         if (response.data.code === 200) {
           const user = {
             userInfo: response.data,
             date: new Date().getTime(),
-            expire: loginMaintainTime,
+            expire: loginMaintainTime
           };
           storageUtils.saveUser(user);
           memoryUtils.user = user;
@@ -47,7 +52,7 @@ function Login() {
           message.info("用户名或密码错误");
         }
       })
-      .catch((err) => {
+      .catch(err => {
         message.info("登陆异常");
       });
   };
