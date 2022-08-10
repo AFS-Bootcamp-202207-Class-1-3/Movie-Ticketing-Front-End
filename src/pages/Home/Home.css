@@ -1,32 +1,38 @@
 .movie-home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .movie-home .home-carousel {
-    width: 80vw;
-    height: 450px;
+  width: 80vw;
+  height: 450px;
 }
 
 .movie-list {
-    width: 80%;
-    margin: 30px;
+  width: 80%;
+  margin: 30px;
 }
 
 .movie-home .movie-pagination {
-    margin: 20px;
+  margin: 20px;
 }
 
 .movie-home .home-carousel .carousel-img {
-    width: 80vw;
-    height: 450px;
+  width: 80vw;
+  height: 450px;
+}
+.movie-card {
+  min-width: 180px;
 }
 .movie-card .ant-card-cover {
-    cursor: pointer;
+  cursor: pointer;
 }
-.movie-card:hover{
-    transform: translateY(-5px);
-	transition: .5s all;
-	box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+.movie-card:hover {
+  transform: translateY(-5px);
+  transition: 0.5s all;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+.ant-card-meta-description {
+  height: 60px;
 }

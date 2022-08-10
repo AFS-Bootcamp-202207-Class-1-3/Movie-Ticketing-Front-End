@@ -16,7 +16,7 @@ export default function Home() {
       setTotalMovies(respsonse.data.totalMovies);
     });
   }, [pageInfo]);
-
+  
   return (
     <div className="movie-home">
       <MovieCarousel />

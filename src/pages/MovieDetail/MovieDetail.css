@@ -4,11 +4,9 @@
 }
 
 .con {
-  height: 100%;
   width: 100%;
   background: linear-gradient(#54bcbd, #fff81d);
 }
-
 .upper-con {
   height: 400px;
   width: 100%;
