@@ -7,18 +7,17 @@ import Logo from "./assets/logo.svg";
 // const { Search } = Input;
 
 const { Header, Content, Footer } = Layout;
-const nickName = JSON.parse(localStorage.getItem("user_key")).userInfo.nickName;
-const avatarUrl = JSON.parse(localStorage.getItem("user_key")).userInfo
-  .avatarUrl;
+let nickName = JSON.parse(localStorage.getItem("user_key")).userInfo.nickName;
+let avatarUrl = JSON.parse(localStorage.getItem("user_key")).userInfo.avatarUrl;
 const generateLabel = (path, itemName) => {
   return <Link to={path}>{itemName}</Link>;
 };
 
 const items = [
-  { key: "Home", title: "Home", label: generateLabel("/User/Home", "Home") },
+  { key: "Home", title: "首页", label: generateLabel("/User/Home", "Home") },
   {
     key: "Orders",
-    title: "Orders",
+    title: "我的订单",
     label: generateLabel("/User/MyOrder", "Orders")
   }
 ];
