@@ -7,7 +7,7 @@ import { getMoviesInfo } from "../../api/HomeApi";
 
 export default function Home() {
   const [movieInfos, setMovieInfos] = useState([]);
-  const [pageInfo, setPageInfo] = useState({ pageNumber: 1, pageSize: 5 });
+  const [pageInfo, setPageInfo] = useState({ pageNumber: 1, pageSize: 6 });
   const [totalMovies, setTotalMovies] = useState(0);
 
   useEffect(() => {
