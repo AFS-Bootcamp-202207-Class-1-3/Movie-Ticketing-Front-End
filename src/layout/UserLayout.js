@@ -7,8 +7,11 @@ import Logo from "./assets/logo.svg";
 // const { Search } = Input;
 
 const { Header, Content, Footer } = Layout;
-let nickName = JSON.parse(localStorage.getItem("user_key")).userInfo.nickName;
-let avatarUrl = JSON.parse(localStorage.getItem("user_key")).userInfo.avatarUrl;
+
+const userLocalStroage = JSON.parse(localStorage.getItem("user_key"));
+const nickName = userLocalStroage==null?"":userLocalStroage.userInfo.nickName;
+const avatarUrl = userLocalStroage==null?"":userLocalStroage.userInfo
+  .avatarUrl;
 const generateLabel = (path, itemName) => {
   return <Link to={path}>{itemName}</Link>;
 };

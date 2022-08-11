@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { Table, Tag, Button } from "antd";
 import React, { useState, useEffect } from "react";
 import MyOrderPagination from "./MyOrderPagination";
-import "./MyOrder.css";
 import { getMyOrderInfo } from "../../api/MyOrderApi";
+import "./MyOrder.css";
 import memoryUtils from "../../utils/memoryUtils";
 export default function MyOrder() {
   const userId = memoryUtils.user.userInfo.userId;
@@ -18,14 +18,13 @@ export default function MyOrder() {
 
   const nav = useNavigate();
 
-  const clickToDetail = item => {
+  const clickToDetail = (orderId) => {
     //  跳转已实现，把1改成orderId可以跳转
-    nav(pathToOrderDetail, { replace: false, state: { orderId: "1" } });
+    nav(pathToOrderDetail, { replace: false, state: { orderId: orderId } });
   };
 
   useEffect(() => {
-    getMyOrderInfo(orderPageInfos).then(response => {
-      console.log(response.data);
+    getMyOrderInfo(orderPageInfos).then((response) => {
       setMyOrderInfos(
         response.data.orderListResponses.map(order => ({
           ...order,
@@ -70,10 +69,10 @@ export default function MyOrder() {
     {
       action: "Action",
       dataIndex: "action",
-      render: (text, item) => (
-        <Button onClick={() => clickToDetail(item)}>{text}</Button>
-      )
-    }
+      render: (_,orderInfo) => (
+        <Button type="link" onClick={() => clickToDetail(orderInfo.id)}>Order Detail</Button>
+      ),
+    },
   ];
 
   return (
