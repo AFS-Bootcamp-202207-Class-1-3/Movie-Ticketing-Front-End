@@ -5,14 +5,10 @@ import { LogoutOutlined } from "@ant-design/icons";
 import { Layout, Menu, Avatar, Input, message } from "antd";
 import Logo from "./assets/logo.svg";
 const { Search } = Input;
-
 const { Header, Content, Footer } = Layout;
 
-const userLocalStroage = JSON.parse(localStorage.getItem("user_key"));
-const nickName =
-  userLocalStroage == null ? "" : userLocalStroage.userInfo.nickName;
-const avatarUrl =
-  userLocalStroage == null ? "" : userLocalStroage.userInfo.avatarUrl;
+
+
 const generateLabel = (path, itemName) => {
   return <Link to={path}>{itemName}</Link>;
 };
@@ -31,6 +27,11 @@ const logout = () => {
 };
 
 export default function BasicLayout() {
+const userLocalStroage = JSON.parse(localStorage.getItem("user_key"));
+  const nickName =
+  userLocalStroage == null ? "" : userLocalStroage.userInfo.nickName;
+  const avatarUrl =
+    userLocalStroage == null ? "" : userLocalStroage.userInfo.avatarUrl;
   const nav = useNavigate();
   const onSearch = searchMessage => {
     if (searchMessage.length === 0) {
