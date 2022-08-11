@@ -1,10 +1,9 @@
 import PairingPagination from "./PairingPagination";
-import { Button, List, Avatar, Badge, Popconfirm, Affix, message } from "antd";
+import { Button, List, Avatar, Badge, Popconfirm, message } from "antd";
 import {
   ManOutlined,
   WomanOutlined,
   PlusCircleTwoTone,
-  ReloadOutlined,
 } from "@ant-design/icons";
 import { postPairInfo } from "../../api/PairingApi";
 import { useNavigate } from "react-router-dom";
@@ -30,13 +29,6 @@ export default function HasPartner(props) {
   };
   return (
     <div>
-      <Affix offsetTop={10}>
-        <Button
-          type="text"
-          icon={<ReloadOutlined />}
-          onClick={props.handlePairInfo}
-        />
-      </Affix>
       <List
         itemLayout="vertical"
         dataSource={props.pairInfos}
