@@ -4,12 +4,14 @@ import React, { useState, useEffect } from "react";
 import MyOrderPagination from "./MyOrderPagination";
 import { getMyOrderInfo } from "../../api/MyOrderApi";
 import "./MyOrder.css";
-
+import memoryUtils from "../../utils/memoryUtils";
 export default function MyOrder() {
+  const userId = memoryUtils.user.userInfo.userId;
   const [myOrderInfos, setMyOrderInfos] = useState([]);
   const [orderPageInfos, setOrderPageInfos] = useState({
     pageNumber: 1,
     pageSize: 10,
+    userId: userId
   });
   const [totalOrders, setTotalOrders] = useState(0);
   const pathToOrderDetail = "/User/OrderDetail";
@@ -22,11 +24,11 @@ export default function MyOrder() {
   };
 
   useEffect(() => {
-    getMyOrderInfo(orderPageInfos, "1").then((response) => {
+    getMyOrderInfo(orderPageInfos).then((response) => {
       setMyOrderInfos(
-        response.data.orderListResponses.map((order) => ({
+        response.data.orderListResponses.map(order => ({
           ...order,
-          key: order.id,
+          key: order.id
         }))
       );
       setTotalOrders(response.data.totalOrders);
@@ -35,34 +37,34 @@ export default function MyOrder() {
 
   const columns = [
     {
-      title: "Movie Name",
-      dataIndex: "name",
+      title: "电影名",
+      dataIndex: "name"
     },
     {
-      title: "Order Id",
+      title: "订单号",
       dataIndex: "id",
-      ellipsis: true,
+      ellipsis: true
     },
     {
-      title: "Start Time",
-      dataIndex: "startTime",
+      title: "电影播放时间",
+      dataIndex: "startTime"
     },
     {
-      title: "Price",
-      dataIndex: "price",
+      title: "价格",
+      dataIndex: "price"
     },
     {
-      title: "Payment Status",
+      title: "支付状态",
       dataIndex: "isPay",
-      render: (isPay) => (
+      render: isPay => (
         <span>
           {
             <Tag color={isPay ? "geekblue" : "green"} key={isPay}>
-              {isPay ? "paid" : "unpaid"}
+              {isPay ? "已支付" : "未支付"}
             </Tag>
           }
         </span>
-      ),
+      )
     },
     {
       action: "Action",
@@ -75,7 +77,7 @@ export default function MyOrder() {
 
   return (
     <div className="my-order-table">
-      <h1>My Orders</h1>
+      <h1>我的订单</h1>
       <Table pagination={false} columns={columns} dataSource={myOrderInfos} />
       <MyOrderPagination
         totalOrders={totalOrders}

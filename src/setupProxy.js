@@ -1,5 +1,5 @@
 const { createProxyMiddleware } = require("http-proxy-middleware")
-const baseURL = process.env.REACT_APP_URL;
+const baseURL = " http://localhost:8080";
 module.exports = function(app) {
   app.use(
     // 代理标识

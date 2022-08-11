@@ -3,10 +3,10 @@ import memoryUtils from "../utils/memoryUtils";
 export default function UserAuthRoute({ children }) {
   const isLogin = () => {
     //判断是否登录
-    const loginUser = memoryUtils.user
-    const currentTime = new Date()
+    const loginUser = memoryUtils.user;
+    const currentTime = new Date();
     if (parseInt(currentTime - loginUser.date) > loginUser.expire) {
-      return false
+      return false;
     }
     return true;
   };

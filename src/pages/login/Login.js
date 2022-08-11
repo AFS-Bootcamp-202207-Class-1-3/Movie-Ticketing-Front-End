@@ -7,7 +7,7 @@ import { addLoginInfo } from "./LoginSlice";
 import storageUtils from "../../utils/storageUtils";
 import memoryUtils from "../../utils/memoryUtils";
 import "./login.css";
-
+import Logo from "./assets/logo-black.svg";
 function Login() {
   const nav = useNavigate();
   const dispatch = useDispatch();
@@ -16,26 +16,31 @@ function Login() {
   const isLogin = () => {
     //判断是否登录
     const loginUser = memoryUtils.user;
-    const currentTime = new Date().getTime();
-    if (parseInt(currentTime) - parseInt(loginUser.date) > loginUser.expire) {
+    console.log(loginUser);
+    const userEmpty = JSON.stringify(loginUser) === "{}";
+    const currentTime = new Date();
+    if (
+      userEmpty ||
+      parseInt(currentTime - loginUser.date) > loginUser.expire
+    ) {
       return false;
     }
     return true;
   };
-  const loginMaintainTime = 15*60*1000;
+  const loginMaintainTime = 60 * 60 * 1000;
 
-  const onFinish = (values) => {
+  const onFinish = values => {
     const request = {
       realName: values.username,
       password: values.password
     };
     login(request)
-      .then((response) => { 
+      .then(response => {
         if (response.data.code === 200) {
           const user = {
             userInfo: response.data,
             date: new Date().getTime(),
-            expire: loginMaintainTime,
+            expire: loginMaintainTime
           };
           storageUtils.saveUser(user);
           memoryUtils.user = user;
@@ -47,7 +52,7 @@ function Login() {
           message.info("用户名或密码错误");
         }
       })
-      .catch((err) => {
+      .catch(err => {
         message.info("登陆异常");
       });
   };
@@ -58,7 +63,7 @@ function Login() {
       <div className="login-box">
         <div className="my-login-form">
           <div className="logo">
-            <img src="assets/logo-black.svg" alt="this is logo" />
+            <img src={Logo} alt="this is logo" />
             <span className="bussiness-name">TMovies</span>
           </div>
           <h2 className="login-title">账户密码登录</h2>

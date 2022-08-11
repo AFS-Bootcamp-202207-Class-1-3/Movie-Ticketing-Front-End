@@ -47,8 +47,8 @@
   display: flex;
   align-items: center;
 }
-.left-bar .ant-menu{
-  min-width: 100px;
+.left-bar .ant-menu {
+  min-width: 200px;
 }
 .Logo {
   min-width: 180px;

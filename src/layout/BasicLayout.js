@@ -9,7 +9,7 @@ export default function BasicLayout() {
       <Content id="login-main">
         <Outlet />
       </Content>
-      <Footer>Design By COOL Team</Footer>
+      <Footer>&copy;Copyright COOL Team</Footer>
     </Layout>
   );
 }
