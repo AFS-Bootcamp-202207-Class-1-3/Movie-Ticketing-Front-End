@@ -7,7 +7,7 @@ export default function MyOrderPagination(props) {
       style={{ margin: "20px" }}
       total={props.totalOrders}
       pageSize={props.orderPageInfos.pageSize}
-      current={props.orderPageInfos.startPage}
+      current={props.orderPageInfos.pageNumber}
       onChange={(page, pageSize) => {
         props.setOrderPageInfos({ pageNumber: page, pageSize: pageSize });
       }}

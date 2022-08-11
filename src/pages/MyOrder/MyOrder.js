@@ -1,39 +1,35 @@
-import {    useNavigate } from "react-router-dom";
-import { Table, Tag,Button } from "antd";
-import React ,{useState,useEffect}from "react";
+import { useNavigate } from "react-router-dom";
+import { Table, Tag, Button } from "antd";
+import React, { useState, useEffect } from "react";
 import MyOrderPagination from "./MyOrderPagination";
-import "./MyOrder.css";
 import { getMyOrderInfo } from "../../api/MyOrderApi";
+import "./MyOrder.css";
 
 export default function MyOrder() {
-
   const [myOrderInfos, setMyOrderInfos] = useState([]);
   const [orderPageInfos, setOrderPageInfos] = useState({
     pageNumber: 1,
     pageSize: 10,
   });
   const [totalOrders, setTotalOrders] = useState(0);
-  const pathToOrderDetail="/User/OrderDetail"
+  const pathToOrderDetail = "/User/OrderDetail";
 
   const nav = useNavigate();
 
-  const clickToDetail=(item)=>{
+  const clickToDetail = (orderId) => {
     //  跳转已实现，把1改成orderId可以跳转
-    nav(pathToOrderDetail, { replace: false, state: { orderId: "1"} });
-  }
+    nav(pathToOrderDetail, { replace: false, state: { orderId: orderId } });
+  };
 
   useEffect(() => {
-    getMyOrderInfo(orderPageInfos,"1").then((response) => {
-        console.log(response.data)
+    getMyOrderInfo(orderPageInfos, "1").then((response) => {
       setMyOrderInfos(
-        
         response.data.orderListResponses.map((order) => ({
           ...order,
           key: order.id,
         }))
       );
       setTotalOrders(response.data.totalOrders);
-
     });
   }, [orderPageInfos]);
 
@@ -61,10 +57,7 @@ export default function MyOrder() {
       render: (isPay) => (
         <span>
           {
-            <Tag
-              color={isPay ? "geekblue" : "green"}
-              key={isPay}
-            >
+            <Tag color={isPay ? "geekblue" : "green"} key={isPay}>
               {isPay ? "paid" : "unpaid"}
             </Tag>
           }
@@ -74,7 +67,9 @@ export default function MyOrder() {
     {
       action: "Action",
       dataIndex: "action",
-      render: (text,item) => <Button onClick={()=>clickToDetail(item)}>{text}</Button>,
+      render: (_,orderInfo) => (
+        <Button type="link" onClick={() => clickToDetail(orderInfo.id)}>Order Detail</Button>
+      ),
     },
   ];
 

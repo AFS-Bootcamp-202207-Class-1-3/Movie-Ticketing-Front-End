@@ -11,7 +11,7 @@ export default function OrderDetail() {
     movieName: "",
     movieSchedule: "",
     seatingArrangement: "",
-    pay: false,
+    isPay: false,
     price: 0.0,
     userName: ""
   });
@@ -64,7 +64,7 @@ export default function OrderDetail() {
   };
 
   const payButton = () => {
-    return orderInfo.pay ? (
+    return orderInfo.isPay ? (
       <Button
         type="primary"
         onClick={() => {
