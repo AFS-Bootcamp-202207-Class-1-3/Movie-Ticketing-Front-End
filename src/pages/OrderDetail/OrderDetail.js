@@ -62,19 +62,19 @@ export default function OrderDetail() {
   const payButton = () => {
     return orderInfo.isPay ? (
       <Button
-        type="primary"
+        type="ghost"
         onClick={() => {
           ButtonTo("/User/Bill");
         }}
         style={{ margin: "10px" }}
       >
-        Check Bill
+        查看订单
       </Button>
     ) : (
       <Button
-        type="primary"
+        type="ghost"
         onClick={handlePutPay}
-        style={{ margin: "10px", width: "200px" }}
+        className="order-detail-button"
       >
         马上支付
       </Button>
@@ -82,51 +82,56 @@ export default function OrderDetail() {
   };
 
   return (
-    <div className="OrderDetail">
+    <div className="order-detail">
       <Spin spinning={loading}>
-        <Descriptions
-          title={<b style={{ fontSize: "200%" }}>订单详情</b>}
-          column={1}
-          style={{
-            width: "40%",
-            marginLeft: "30%"
-          }}
-        >
-          <Descriptions.Item
-            label={<font className="OrderDetail-Item">订单号：</font>}
-          >
-            <font className="OrderDetail-Item"> {orderInfo.orderId}</font>
-          </Descriptions.Item>
-          <Descriptions.Item
-            label={<font className="OrderDetail-Item">姓名：</font>}
-          >
-            <font className="OrderDetail-Item"> {orderInfo.userName}</font>
-          </Descriptions.Item>
-          <Descriptions.Item
-            label={<font className="OrderDetail-Item">电影名：</font>}
-          >
-            <font className="OrderDetail-Item"> {orderInfo.movieName}</font>
-          </Descriptions.Item>
-          <Descriptions.Item
-            label={<font className="OrderDetail-Item">电影播放时间：</font>}
-          >
-            <font className="OrderDetail-Item"> {orderInfo.movieSchedule}</font>
-          </Descriptions.Item>
-          <Descriptions.Item
-            label={
-              <font className="OrderDetail-Item">座位：</font>
-            }
-          >
-            <font className="OrderDetail-Item">
-              {orderInfo.seatingArrangement}
-            </font>
-          </Descriptions.Item>
-          <Descriptions.Item
-            label={<font className="OrderDetail-Item">价格： </font>}
-          >
-            <font className="OrderDetail-Item"> {orderInfo.price}</font>
-          </Descriptions.Item>
-        </Descriptions>
+        <div className="order-box">
+          <div className="order-message">
+            <Descriptions
+              title={<b style={{ fontSize: "200%" }}>订单详情</b>}
+              column={1}
+            >
+              <Descriptions.Item
+                label={<font className="order-detail-item">订单号</font>}
+              >
+                <font className="order-detail-item"> {orderInfo.orderId}</font>
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={<font className="order-detail-item">姓名</font>}
+              >
+                <font className="order-detail-item"> {orderInfo.userName}</font>
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={<font className="order-detail-item">电影名</font>}
+              >
+                <font className="order-detail-item">
+                  {" "}
+                  {orderInfo.movieName}
+                </font>
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={<font className="order-detail-item">电影播放时间</font>}
+              >
+                <font className="order-detail-item">
+                  {" "}
+                  {orderInfo.movieSchedule}
+                </font>
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={<font className="order-detail-item">座位</font>}
+              >
+                <font className="order-detail-item">
+                  {orderInfo.seatingArrangement}
+                </font>
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={<font className="order-detail-item">价格</font>}
+              >
+                <font className="order-detail-item"> {orderInfo.price}</font>
+              </Descriptions.Item>
+            </Descriptions>
+          </div>
+        </div>
+
         {payButton()}
       </Spin>
     </div>
