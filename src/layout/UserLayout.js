@@ -37,7 +37,6 @@ export default function BasicLayout() {
       message.info("您输入的电影名为空！");
       return;
     }
-    console.log(searchMessage);
     nav("/User/Search", { replace: true, state: { searchMessage } });
   };
   return (

@@ -25,8 +25,6 @@ export default function MyOrder() {
 
   useEffect(() => {
     getMyOrderInfo(orderPageInfos).then(response => {
-      console.log(response.data);
-      
       setMyOrderInfos(
         response.data.orderListResponses.map(order => ({
           ...order,
