@@ -25,9 +25,9 @@ export default function SelectCinemaAndViewingTime() {
     });
   }, []);
   const nav = useNavigate();
-  const handleCinemaChange = value => {
-    setChoseCinema(value);
-    getStartTime(value).then(response => {
+  const handleCinemaChange = cinemaId => {
+    setChoseCinema(cinemaId);
+    getStartTime(cinemaId, movieId).then(response => {
       setStartTimeData(response.data);
     });
   };
