@@ -25,10 +25,11 @@ export default function SelectCinemaAndViewingTime() {
     });
   }, []);
   const nav = useNavigate();
-  const handleCinemaChange = value => {
-    setChoseCinema(value);
+  const handleCinemaChange = cinemaID => {
+    setChoseCinema(cinemaID);
     setChoseMovieSchedule("");
-    getStartTime(value).then(response => {
+    setStartTimeData([]);
+    getStartTime(cinemaID, movieId).then(response => {
       setStartTimeData(response.data);
     });
   };
