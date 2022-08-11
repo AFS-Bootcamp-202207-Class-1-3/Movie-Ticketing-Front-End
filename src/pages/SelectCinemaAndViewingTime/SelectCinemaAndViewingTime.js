@@ -4,7 +4,7 @@ import { Select, Button, message } from "antd";
 import {
   getCinemas,
   getStartTime,
-  getSameViewingTime,
+  getSameViewingTime
 } from "../../api/SelectCinemaAndViewingTimeApi";
 import "../SelectCinemaAndViewingTime/SelectCinemaAndViewingTime.css";
 import { useLocation } from "react-router-dom";
@@ -16,27 +16,27 @@ export default function SelectCinemaAndViewingTime() {
   const [choseMovieSchedule, setChoseMovieSchedule] = useState(1);
   const [choseCinema, setChoseCinema] = useState(1);
   const {
-    state: { movieId },
+    state: { movieId }
   } = useLocation();
   const userId = memoryUtils.user.userInfo.userId;
   useEffect(() => {
-    getCinemas().then((response) => {
+    getCinemas().then(response => {
       setCinemaData(response.data);
     });
   }, []);
   const nav = useNavigate();
-  const handleCinemaChange = (value) => {
+  const handleCinemaChange = value => {
     setChoseCinema(value);
-    getStartTime(value).then((response) => {
+    getStartTime(value).then(response => {
       setStartTimeData(response.data);
     });
   };
 
-  const onSecondStartTimeChange = (value) => {
+  const onSecondStartTimeChange = value => {
     setChoseMovieSchedule(value);
   };
 
-  const ButtonTo = (path) => {
+  const ButtonTo = path => {
     if (choseCinema === "" || choseMovieSchedule === "") {
       alert("请先选择！");
       return;
@@ -46,9 +46,9 @@ export default function SelectCinemaAndViewingTime() {
       userId: userId,
       cinemaId: choseCinema,
       movieScheduleId: choseMovieSchedule,
-      movieId: movieId,
+      movieId: movieId
     };
-    getSameViewingTime(orderRequest).then((response) => {
+    getSameViewingTime(orderRequest).then(response => {
       if (response.data === true) {
         message.warn("你已选择过该场次，具体订单可在个人订单页面查询");
         return;
@@ -58,8 +58,8 @@ export default function SelectCinemaAndViewingTime() {
         state: {
           movieScheduleId: choseMovieSchedule,
           movieId: movieId,
-          cinemaId: choseCinema,
-        },
+          cinemaId: choseCinema
+        }
       });
     });
   };
@@ -68,28 +68,28 @@ export default function SelectCinemaAndViewingTime() {
     <div className="movie-schedule-box">
       <div className="select-box">
         <div className="cinema-select">
-          <h1>Choose the cinema you like:</h1>
+          <h1>选择影院</h1>
           <Select
             style={{
-              width: 200,
+              width: 200
             }}
             onChange={handleCinemaChange}
           >
-            {cinemaData.map((cinema) => (
+            {cinemaData.map(cinema => (
               <Option key={cinema.id}>{cinema.name}</Option>
             ))}
           </Select>
         </div>
         <div className="viewtime-select">
-          <h1>Choose your viewing time:</h1>
+          <h1>选择场次</h1>
           <div>
             <Select
               style={{
-                width: 200,
+                width: 200
               }}
               onChange={onSecondStartTimeChange}
             >
-              {startTimeData.map((startTime) => (
+              {startTimeData.map(startTime => (
                 <Option key={startTime.id}>{startTime.startTime}</Option>
               ))}
             </Select>
@@ -103,7 +103,7 @@ export default function SelectCinemaAndViewingTime() {
             ButtonTo("/User/Pairing");
           }}
         >
-          Confirm
+          确认
         </Button>
       </div>
     </div>

@@ -32,7 +32,7 @@ export default function MovieCard({ movieInfo }) {
               });
             }}
           >
-            More Detail
+            更多信息
           </Button>
         ]}
       >

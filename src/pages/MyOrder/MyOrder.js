@@ -38,30 +38,30 @@ export default function MyOrder() {
 
   const columns = [
     {
-      title: "Movie Name",
+      title: "电影名",
       dataIndex: "name"
     },
     {
-      title: "Order Id",
+      title: "订单号",
       dataIndex: "id",
       ellipsis: true
     },
     {
-      title: "Start Time",
+      title: "电影播放时间",
       dataIndex: "startTime"
     },
     {
-      title: "Price",
+      title: "价格",
       dataIndex: "price"
     },
     {
-      title: "Payment Status",
+      title: "支付状态",
       dataIndex: "isPay",
       render: isPay => (
         <span>
           {
             <Tag color={isPay ? "geekblue" : "green"} key={isPay}>
-              {isPay ? "paid" : "unpaid"}
+              {isPay ? "已支付" : "未支付"}
             </Tag>
           }
         </span>
@@ -78,7 +78,7 @@ export default function MyOrder() {
 
   return (
     <div className="my-order-table">
-      <h1>My Orders</h1>
+      <h1>我的订单</h1>
       <Table pagination={false} columns={columns} dataSource={myOrderInfos} />
       <MyOrderPagination
         totalOrders={totalOrders}

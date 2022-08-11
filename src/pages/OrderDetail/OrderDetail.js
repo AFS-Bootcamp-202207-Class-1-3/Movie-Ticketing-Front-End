@@ -76,7 +76,7 @@ export default function OrderDetail() {
         onClick={handlePutPay}
         style={{ margin: "10px", width: "200px" }}
       >
-        Pay now
+        马上支付
       </Button>
     );
   };
@@ -85,7 +85,7 @@ export default function OrderDetail() {
     <div className="OrderDetail">
       <Spin spinning={loading}>
         <Descriptions
-          title={<b style={{ fontSize: "200%" }}>Order Information</b>}
+          title={<b style={{ fontSize: "200%" }}>订单详情</b>}
           column={1}
           style={{
             width: "40%",
@@ -93,28 +93,28 @@ export default function OrderDetail() {
           }}
         >
           <Descriptions.Item
-            label={<font className="OrderDetail-Item">OrderId</font>}
+            label={<font className="OrderDetail-Item">订单号：</font>}
           >
             <font className="OrderDetail-Item"> {orderInfo.orderId}</font>
           </Descriptions.Item>
           <Descriptions.Item
-            label={<font className="OrderDetail-Item">UserName</font>}
+            label={<font className="OrderDetail-Item">姓名：</font>}
           >
             <font className="OrderDetail-Item"> {orderInfo.userName}</font>
           </Descriptions.Item>
           <Descriptions.Item
-            label={<font className="OrderDetail-Item">Movie Name</font>}
+            label={<font className="OrderDetail-Item">电影名：</font>}
           >
             <font className="OrderDetail-Item"> {orderInfo.movieName}</font>
           </Descriptions.Item>
           <Descriptions.Item
-            label={<font className="OrderDetail-Item">Movie Schedule</font>}
+            label={<font className="OrderDetail-Item">电影播放时间：</font>}
           >
             <font className="OrderDetail-Item"> {orderInfo.movieSchedule}</font>
           </Descriptions.Item>
           <Descriptions.Item
             label={
-              <font className="OrderDetail-Item">Seating Arrangement </font>
+              <font className="OrderDetail-Item">座位：</font>
             }
           >
             <font className="OrderDetail-Item">
@@ -122,7 +122,7 @@ export default function OrderDetail() {
             </font>
           </Descriptions.Item>
           <Descriptions.Item
-            label={<font className="OrderDetail-Item">Price </font>}
+            label={<font className="OrderDetail-Item">价格： </font>}
           >
             <font className="OrderDetail-Item"> {orderInfo.price}</font>
           </Descriptions.Item>

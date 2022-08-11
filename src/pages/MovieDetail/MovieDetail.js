@@ -52,17 +52,17 @@ function MovieDetail() {
             <div className="movie-attr">
               <div className="name movie-name">{movieInfo.name}</div>
               <div className="attr attr-time">
-                Release Time: {movieInfo.releaseTime}
+                开映时间: {movieInfo.releaseTime}
               </div>
               <div className="attr attr-duration">
-                Duration: {movieInfo.duration} min
+                时长: {movieInfo.duration} min
               </div>
               <div className="attr attr-types">
-                Types: <MovieTypes movieTypeList={movieTypeList} />
+                <MovieTypes movieTypeList={movieTypeList} />
               </div>
               <div className="click-buy-box">
                 <Button type="primary" danger onClick={clickToBuy}>
-                  Click To Buy
+                  点击购买
                 </Button>
               </div>
             </div>
