@@ -1,101 +1,98 @@
 .no-result-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 75vh;
 }
 
-.no-result{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.no-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.no-result-info{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.no-result-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .no-result-info div {
-    font-size: 30px;
-    margin: 20px auto;
+  font-size: 30px;
+  margin: 20px auto;
 }
 .big-Logo {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .big-Logo img {
-    width: 150px;
-    height: 150px;
+  width: 150px;
+  height: 150px;
 }
 
 .big-Logo span {
-    display: inline-block;
-    margin-left: 30px;
-    font-size: 80px;
-    color: black;
+  display: inline-block;
+  margin-left: 30px;
+  font-size: 80px;
+  color: black;
 }
 
 .movie-home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .movie-home .home-carousel {
-    width: 80vw;
-    height: 450px;
+  width: 80vw;
+  height: 450px;
 }
 
 .movie-list {
-    width: 80%;
-    margin: 30px;
+  width: 80vw;
+  margin: 30px;
 }
 
 .movie-home .movie-pagination {
-    margin: 20px;
+  margin: 20px;
 }
 
 .movie-home .home-carousel .carousel-img {
-    width: 80vw;
-    height: 450px;
+  width: 80vw;
+  height: 450px;
 }
 .movie-card {
-    max-width: 400px;
-    min-width: 180px;
-    max-height: 700px;
+  max-width: 400px;
+  min-width: 180px;
+  max-height: 700px;
 }
 .movie-card .ant-card {
-    width: 100%;
+  width: 100%;
 }
 .movie-card .ant-card-cover {
-    cursor: pointer;
+  cursor: pointer;
 }
 .movie-card .ant-card-cover img {
-    max-width: 400px;
-    width: 100%;
-    height: 500px;
+  max-width: 400px;
+  width: 100%;
+  height: 500px;
 }
 .movie-card:hover {
-    transform: translateY(-5px);
-    transition: 0.5s all;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  transition: 0.5s all;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 .ant-card-meta-detail {
-    width: 100%;
+  width: 100%;
 }
 .ant-card-meta-description {
-    width: 100%;
-    height: 60px;
-    word-break: keep-all;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  width: 100%;
+  height: 60px;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
-
-

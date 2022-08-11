@@ -2,7 +2,7 @@ import {
   ReloadOutlined,
   ManOutlined,
   WomanOutlined,
-  PlusOutlined,
+  PlusOutlined
 } from "@ant-design/icons";
 import { Button, message, List, Badge, Avatar, Card } from "antd";
 import { postStartPairing } from "../../api/PairingApi";
@@ -11,7 +11,7 @@ export default function MyPairInfo(props) {
   const handleStartPair = () => {
     postStartPairing({
       userId: props.userId,
-      movieScheduleId: props.movieScheduleId,
+      movieScheduleId: props.movieScheduleId
     })
       .then(() => {
         props.handlePairInfo();
@@ -48,7 +48,7 @@ export default function MyPairInfo(props) {
             itemLayout="vertical"
             dataSource={[props.myPairInfo]}
             bordered
-            renderItem={(pairInfo) => (
+            renderItem={pairInfo => (
               <List.Item>
                 <List.Item.Meta
                   className="list-item-meta"
@@ -72,7 +72,7 @@ export default function MyPairInfo(props) {
                   title={
                     <span className="list-item-meta-name">
                       {pairInfo.nickName}
-                      <font style={{ fontSize: "5px", color: "blue" }}>
+                      <font style={{ fontSize: "10px", color: "blue" }}>
                         (本人)
                       </font>
                       <font
@@ -80,7 +80,7 @@ export default function MyPairInfo(props) {
                           marginLeft: "10px",
                           fontSize: "15px",
                           fontWeight: "900",
-                          color: "gray",
+                          color: "gray"
                         }}
                       >
                         {" "}
@@ -102,7 +102,7 @@ export default function MyPairInfo(props) {
         <Card
           style={{
             background: "transparent",
-            border: "none",
+            border: "none"
           }}
         >
           <p>没有心仪的同伴？快点击按钮发起匹配吧</p>
