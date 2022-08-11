@@ -3,7 +3,7 @@ import { Button, List, Avatar, Badge, Popconfirm, message } from "antd";
 import {
   ManOutlined,
   WomanOutlined,
-  PlusCircleTwoTone,
+  PlusCircleTwoTone
 } from "@ant-design/icons";
 import { postPairInfo } from "../../api/PairingApi";
 import { useNavigate } from "react-router-dom";
@@ -11,15 +11,15 @@ import "./Pairing.css";
 export default function HasPartner(props) {
   const { movieScheduleId, movieId, cinemaId, userId } = props;
   const nav = useNavigate();
-  const confirm = (pairInfo) => {
+  const confirm = pairInfo => {
     postPairInfo({
       userId,
       partnerId: pairInfo.id,
       movieScheduleId,
       movieId,
-      cinemaId,
+      cinemaId
     })
-      .then((response) => {
+      .then(response => {
         const orderInfo = response.data;
         nav("/User/OrderDetail", { state: { orderId: orderInfo.id } });
       })
@@ -32,7 +32,7 @@ export default function HasPartner(props) {
       <List
         itemLayout="vertical"
         dataSource={props.pairInfos}
-        renderItem={(pairInfo) => (
+        renderItem={pairInfo => (
           <List.Item
             className="list-item"
             extra={
@@ -44,11 +44,14 @@ export default function HasPartner(props) {
                 okText="Yes"
                 cancelText="No"
               >
-                <Button
-                  type="text"
-                  shape="circle"
-                  icon={<PlusCircleTwoTone twoToneColor="gray" />}
-                ></Button>
+                <div className="add-partner">
+                  <Button
+                    type="text"
+                    shape="circle"
+                    size={"large"}
+                    icon={<PlusCircleTwoTone twoToneColor="red" />}
+                  ></Button>
+                </div>
               </Popconfirm>
             }
           >
@@ -79,7 +82,7 @@ export default function HasPartner(props) {
                       marginLeft: "10px",
                       fontSize: "15px",
                       fontWeight: "900",
-                      color: "gray",
+                      color: "gray"
                     }}
                   >
                     {" "}
