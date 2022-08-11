@@ -4,6 +4,7 @@ export function getMoviesInfo(pageInfo) {
     params: {
         pageNumber: pageInfo.pageNumber,
         pageSize: pageInfo.pageSize,
+        searchMessage: pageInfo.searchMessage
     }
 });
 }

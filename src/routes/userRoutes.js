@@ -2,6 +2,7 @@ import Demo from "../pages/Demo/Demo";
 import OrderDetail from "../pages/OrderDetail/OrderDetail";
 import Bill from "../pages/Bill/Bill";
 import Home from "../pages/Home/Home";
+import SearchResult from "../pages/SearchResult/SearchResult";
 import MovieDetail from "../pages/MovieDetail/MovieDetail";
 import SelectCinemaAndViewingTime from "../pages/SelectCinemaAndViewingTime/SelectCinemaAndViewingTime";
 import Pairing from "../pages/Pairing/Pairing";
@@ -35,6 +36,10 @@ const userRoutes = [
   {
     path: "Home",
     element: <Home />,
+  },
+  {
+    path: "Search",
+    element: <SearchResult />
   },
   {
     path: "SelectCinemaAndViewingTime",
