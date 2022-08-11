@@ -11,7 +11,7 @@ export function getPairInfo(pageInfo, userId, movieScheduleId) {
 }
 
 export function postPairInfo(pairInfoRequest) {
-  return axios.post("/api/order/", pairInfoRequest);
+  return axios.post("/api/order", pairInfoRequest);
 }
 
 export function getMyPairInfo(userId, movieScheduleId) {

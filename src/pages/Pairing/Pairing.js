@@ -6,6 +6,7 @@ import NoPartner from "./NoPartner";
 import HasPartner from "./HasPartner";
 // import { useSelector } from "react-redux";
 import memoryUtils from "../../utils/memoryUtils";
+import MyPairInfo from "./MyPairInfo";
 const PageNumber = 1;
 const PageSize = 6;
 export default function Pairing() {
@@ -50,7 +51,9 @@ export default function Pairing() {
       .then((response) => {
         console.log(response.data);
         if (response.data.status === 3) {
+          message.success("恭喜，匹配成功，可以点击订单详情页查看具体信息");
           nav("/User/MyOrder", { replace: true });
+          return;
         }
         setMyPairInfo(response.data);
       })
@@ -63,10 +66,22 @@ export default function Pairing() {
 
   return isNaN(total) || total <= 0 ? (
     <div className="no-pair-box">
+      <MyPairInfo
+        handlePairInfo={handlePairInfo}
+        movieScheduleId={movieScheduleId}
+        userId={userId}
+        myPairInfo={myPairInfo}
+      />
       <NoPartner handlePairInfo={handlePairInfo} />
     </div>
   ) : (
     <div style={{ width: "80vw" }}>
+      <MyPairInfo
+        handlePairInfo={handlePairInfo}
+        movieScheduleId={movieScheduleId}
+        userId={userId}
+        myPairInfo={myPairInfo}
+      />
       <HasPartner
         handlePairInfo={handlePairInfo}
         pageInfo={pageInfo}
