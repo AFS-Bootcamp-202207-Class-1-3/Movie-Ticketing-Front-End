@@ -1,10 +1,11 @@
 import MovieList from "../Home/MovieList";
 import MoviePagination from "../Home/MoviePagination";
-import "../Home/Home.css";
 import {useEffect, useState} from "react";
 import {getMoviesInfo} from "../../api/HomeApi";
 import {useLocation} from "react-router-dom";
 import NotSearchResult from "./NotSearchResult";
+
+import "./Search.css"
 
 export default function SearchResult() {
     const {

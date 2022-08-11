@@ -53,7 +53,7 @@ function MovieDetail() {
               <div className="movie-message">
                 <div className="name movie-name">{movieInfo.name}</div>
                 <div className="attr attr-time">
-                  开映时间 : {movieInfo.releaseTime}
+                  上映时间 : {movieInfo.releaseTime}
                 </div>
                 <div className="attr attr-duration">
                   时长 : {movieInfo.duration} 分钟
