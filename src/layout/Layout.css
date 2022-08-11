@@ -72,7 +72,7 @@
 .right-bar {
   display: flex;
   align-items: center;
-  width: 150px;
+  width: 200px;
   height: 100%;
 }
 .user {
@@ -88,4 +88,3 @@
   margin-left: 10px;
   color: white;
 }
-
