@@ -27,6 +27,7 @@ export default function SelectCinemaAndViewingTime() {
   const nav = useNavigate();
   const handleCinemaChange = cinemaId => {
     setChoseCinema(cinemaId);
+    setChoseMovieSchedule("");
     getStartTime(cinemaId, movieId).then(response => {
       setStartTimeData(response.data);
     });
