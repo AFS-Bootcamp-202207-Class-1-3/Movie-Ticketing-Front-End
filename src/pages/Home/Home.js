@@ -11,12 +11,12 @@ export default function Home() {
   const [totalMovies, setTotalMovies] = useState(0);
 
   useEffect(() => {
-    getMoviesInfo(pageInfo).then((respsonse) => {
+    getMoviesInfo(pageInfo).then(respsonse => {
       setMovieInfos(respsonse.data.movieResponses);
       setTotalMovies(respsonse.data.totalMovies);
     });
   }, [pageInfo]);
-
+  
   return (
     <div className="movie-home">
       <MovieCarousel />

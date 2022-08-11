@@ -9,22 +9,31 @@ export default function MovieCard({ movieInfo }) {
   return (
     <div className="movie-card">
       <Card
-        style={{
-          width: 300,
-        }}
-        cover={<img alt="moviephoto" src={movieInfo.postUrl} />}
+        cover={
+          <img
+            alt="moviephoto"
+            src={movieInfo.postUrl}
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              nav("/User/MovieDetail", {
+                replace: true,
+                state: { movieId: movieInfo.id }
+              });
+            }}
+          />
+        }
         actions={[
           <Button
             type="link"
             onClick={() => {
               nav("/User/MovieDetail", {
                 replace: true,
-                state: { movieId: movieInfo.id },
+                state: { movieId: movieInfo.id }
               });
             }}
           >
-            More Detail
-          </Button>,
+            更多信息
+          </Button>
         ]}
       >
         <Meta title={movieInfo.name} description={movieInfo.introduction} />
