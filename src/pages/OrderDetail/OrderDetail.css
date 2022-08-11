@@ -1,8 +1,15 @@
-.OrderDetail{
-    background-color: rgb(166, 220, 241);
-    text-align: center;
+.order-detail {
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
-
-.OrderDetail-Item{
-    font-size: 150%;
+.order-box {
+  display: flex;
+  justify-content: center;
+}
+.order-detail-item {
+  font-size: 150%;
+}
+.ant-descriptions{
+    
 }
