@@ -39,7 +39,7 @@ export default function SelectCinemaAndViewingTime() {
 
   const ButtonTo = path => {
     if (choseCinema === "" || choseMovieSchedule === "") {
-      alert("请先选择！");
+      message.info("请选择电影院和场次！")
       return;
     }
     //点击确定后判断是否已经存在相同场次订单，如果是则跳转到对应订单详情页

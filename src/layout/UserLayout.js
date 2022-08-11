@@ -1,10 +1,11 @@
 import "./Layout.css";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+
 // add input
-import { Layout, Menu, Avatar } from "antd";
+import { Layout, Menu, Avatar, Input, message } from "antd";
 import Logo from "./assets/logo.svg";
 
-// const { Search } = Input;
+const { Search } = Input;
 
 const { Header, Content, Footer } = Layout;
 
@@ -26,9 +27,18 @@ const items = [
   }
 ];
 
-// Todo search movie by name
-// const onSearch = value => console.log(value);
+
+
 export default function BasicLayout() {
+  const nav = useNavigate();
+  const onSearch = searchMessage => {
+    if(searchMessage.length === 0){
+      message.info("您输入的电影名为空！")
+      return;
+    }
+    console.log(searchMessage)
+    nav("/User/Search", { replace: true, state: { searchMessage }});
+  }
   return (
     <Layout className="user-layout">
       <Header>
@@ -42,7 +52,10 @@ export default function BasicLayout() {
           </div>
 
           <div className="searchBar">
-            {/* <Search placeholder="" onSearch={onSearch} /> */}
+            <Search
+                placeholder="请输入电影名称"
+                maxLength={10}
+                onSearch={onSearch} />
           </div>
           <div className="right-bar">
             <div className="user">
