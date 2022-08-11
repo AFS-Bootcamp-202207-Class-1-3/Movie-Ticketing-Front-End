@@ -7,6 +7,7 @@ export default function PairingPagination(props) {
   };
   return (
     <Pagination
+      style={{ marginTop: "10px" }}
       current={props.pageInfo.pageNumber}
       pageSize={props.pageInfo.pageSize}
       total={props.total}

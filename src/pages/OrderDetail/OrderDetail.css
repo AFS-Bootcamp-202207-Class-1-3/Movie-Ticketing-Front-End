@@ -1,15 +1,31 @@
+.ant-spin-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .order-detail {
   display: flex;
+  justify-content: center;
   align-items: center;
   text-align: center;
 }
 .order-box {
   display: flex;
   justify-content: center;
+  background: rgba(244, 244, 244, 0.15);
+}
+.order-message {
+  width: 80%;
+  background: transparent;
 }
 .order-detail-item {
+  font-weight: 700;
   font-size: 150%;
 }
-.ant-descriptions{
-    
+.order-detail-button {
+  width: 200px;
+  height: 50px;
+  color: white;
+  margin-top: 20px;
 }

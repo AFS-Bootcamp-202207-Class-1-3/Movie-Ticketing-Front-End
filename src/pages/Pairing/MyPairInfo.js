@@ -1,4 +1,9 @@
-import { ReloadOutlined, ManOutlined, WomanOutlined } from "@ant-design/icons";
+import {
+  ReloadOutlined,
+  ManOutlined,
+  WomanOutlined,
+  PlusOutlined,
+} from "@ant-design/icons";
 import { Button, message, List, Badge, Avatar, Card } from "antd";
 import { postStartPairing } from "../../api/PairingApi";
 
@@ -8,8 +13,7 @@ export default function MyPairInfo(props) {
       userId: props.userId,
       movieScheduleId: props.movieScheduleId,
     })
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
         props.handlePairInfo();
       })
       .catch(() => {
@@ -17,63 +21,93 @@ export default function MyPairInfo(props) {
       });
   };
 
+  const refresh = () => {
+    props.handlePairInfo();
+    message.info("已刷新");
+  };
+
   return (
-    <div>
+    <div className="start-pair-box">
+      <div className="fresh-button-box">
+        <Button
+          type="text"
+          onClick={handleStartPair}
+          disabled={props.myPairInfo.status !== 1}
+          style={{ margin: "10px" }}
+          icon={<PlusOutlined />}
+        >
+          发起匹配
+        </Button>
+        <Button type="text" icon={<ReloadOutlined />} onClick={refresh}>
+          刷新列表
+        </Button>
+      </div>
       {props.myPairInfo.status === 2 ? (
-        <List
-          itemLayout="vertical"
-          dataSource={[props.myPairInfo]}
-          bordered
-          renderItem={(pairInfo) => (
-            <List.Item>
-              <List.Item.Meta
-                avatar={
-                  <Badge
-                    count={
-                      pairInfo.gender === "male" ? (
-                        <ManOutlined />
-                      ) : (
-                        <WomanOutlined />
-                      )
-                    }
-                  >
-                    <Avatar src={pairInfo.avatarUrl} />
-                  </Badge>
-                }
-                title={
-                  <span>
-                    {pairInfo.nickName}
-                    <font style={{ fontSize: "5px", color: "blue" }}>
-                      (本人)
-                    </font>
-                    <font style={{ marginLeft: "10px", fontSize: "8px" }}>
-                      {" "}
-                      age:{pairInfo.age}
-                    </font>
-                  </span>
-                }
-                description={<span>{pairInfo.introduction}</span>}
-              />
-            </List.Item>
-          )}
-        ></List>
+        <div className="pair-list">
+          <List
+            itemLayout="vertical"
+            dataSource={[props.myPairInfo]}
+            bordered
+            renderItem={(pairInfo) => (
+              <List.Item>
+                <List.Item.Meta
+                  className="list-item-meta"
+                  avatar={
+                    <Badge
+                      className="list-item-avatar-badge"
+                      count={
+                        pairInfo.gender === "male" ? (
+                          <ManOutlined />
+                        ) : (
+                          <WomanOutlined />
+                        )
+                      }
+                    >
+                      <Avatar
+                        src={pairInfo.avatarUrl}
+                        className="list-item-avatar"
+                      />
+                    </Badge>
+                  }
+                  title={
+                    <span className="list-item-meta-name">
+                      {pairInfo.nickName}
+                      <font style={{ fontSize: "5px", color: "blue" }}>
+                        (本人)
+                      </font>
+                      <font
+                        style={{
+                          marginLeft: "10px",
+                          fontSize: "15px",
+                          fontWeight: "900",
+                          color: "gray",
+                        }}
+                      >
+                        {" "}
+                        age: {pairInfo.age}
+                      </font>
+                    </span>
+                  }
+                  description={
+                    <span className="list-item-description">
+                      {pairInfo.introduction}
+                    </span>
+                  }
+                />
+              </List.Item>
+            )}
+          ></List>
+        </div>
       ) : (
-        <Card>
+        <Card
+          style={{
+            background: "transparent",
+            border: "none",
+          }}
+        >
           <p>没有心仪的同伴？快点击按钮发起匹配吧</p>
         </Card>
       )}
-      <Button
-        type="text"
-        icon={<ReloadOutlined />}
-        onClick={props.handlePairInfo}
-      />
-      <Button
-        type="primary"
-        onClick={handleStartPair}
-        disabled={props.myPairInfo.status !== 1}
-      >
-        发起匹配
-      </Button>
     </div>
   );
 }
