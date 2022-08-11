@@ -49,7 +49,6 @@ export default function Pairing() {
 
     getMyPairInfo(userIdRef.current, movieScheduleIdRef.current)
       .then((response) => {
-        console.log(response.data);
         if (response.data.status === 3) {
           message.success("恭喜，匹配成功，可以点击订单详情页查看具体信息");
           nav("/User/MyOrder", { replace: true });
