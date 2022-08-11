@@ -18,13 +18,13 @@ export default function MyOrder() {
 
   const nav = useNavigate();
 
-  const clickToDetail = (orderId) => {
+  const clickToDetail = orderId => {
     //  跳转已实现，把1改成orderId可以跳转
     nav(pathToOrderDetail, { replace: false, state: { orderId: orderId } });
   };
 
   useEffect(() => {
-    getMyOrderInfo(orderPageInfos).then((response) => {
+    getMyOrderInfo(orderPageInfos).then(response => {
       setMyOrderInfos(
         response.data.orderListResponses.map(order => ({
           ...order,
@@ -69,10 +69,12 @@ export default function MyOrder() {
     {
       action: "Action",
       dataIndex: "action",
-      render: (_,orderInfo) => (
-        <Button type="link" onClick={() => clickToDetail(orderInfo.id)}>Order Detail</Button>
-      ),
-    },
+      render: (_, orderInfo) => (
+        <Button type="link" onClick={() => clickToDetail(orderInfo.id)}>
+          订单详情
+        </Button>
+      )
+    }
   ];
 
   return (

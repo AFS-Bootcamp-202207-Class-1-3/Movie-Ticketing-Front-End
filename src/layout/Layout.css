@@ -4,7 +4,8 @@
   align-items: center;
 }
 .user-layout.ant-layout {
-  background-color: white;
+  background-image: url(./assets/background.jpg);
+  background-size: cover;
 }
 .user-layout .ant-layout-header {
   display: flex;
@@ -21,7 +22,7 @@
   display: flex;
   width: 80vw;
   min-height: 75vh;
-  background-color: white;
+  /* background: rgba(red, green, blue, alpha); */
 }
 
 .user-layout .ant-layout-footer {
@@ -71,7 +72,7 @@
 .right-bar {
   display: flex;
   align-items: center;
-  width: 150px;
+  width: 200px;
   height: 100%;
 }
 .user {

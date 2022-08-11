@@ -3,8 +3,8 @@ export function getCinemas() {
     return axios.get(`/api/cinema`);
 }
 
-export function getStartTime(id) {
-    return axios.get(`/api/movieSchedule/cinema/${id}`);
+export function getStartTime(cinemaId,movieId) {
+    return axios.get(`/api/movieSchedule?cinemaId=${cinemaId}&movieId=${movieId}`);
 }
 
 export function getSameViewingTime(orderRequest) {

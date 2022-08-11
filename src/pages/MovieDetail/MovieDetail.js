@@ -24,7 +24,7 @@ function MovieDetail() {
     getMovieDetail(movieId)
       .then(response => {
         setMovieInfo(response.data);
-        const movieTypes = response.data.types.split("/");
+        const movieTypes = response.data.types.split(" ");
         setMovieTypeList(movieTypes);
         setLoading(false);
       })
@@ -50,20 +50,22 @@ function MovieDetail() {
               <img alt="post" src={movieInfo.postUrl} />
             </div>
             <div className="movie-attr">
-              <div className="name movie-name">{movieInfo.name}</div>
-              <div className="attr attr-time">
-                开映时间: {movieInfo.releaseTime}
-              </div>
-              <div className="attr attr-duration">
-                时长: {movieInfo.duration} min
-              </div>
-              <div className="attr attr-types">
-                <MovieTypes movieTypeList={movieTypeList} />
-              </div>
-              <div className="click-buy-box">
-                <Button type="primary" danger onClick={clickToBuy}>
-                  点击购买
-                </Button>
+              <div className="movie-message">
+                <div className="name movie-name">{movieInfo.name}</div>
+                <div className="attr attr-time">
+                  上映时间 : {movieInfo.releaseTime}
+                </div>
+                <div className="attr attr-duration">
+                  时长 : {movieInfo.duration} 分钟
+                </div>
+                <div className="attr attr-types">
+                  <MovieTypes movieTypeList={movieTypeList} />
+                </div>
+                <div className="click-buy-box">
+                  <Button type="primary" danger onClick={clickToBuy}>
+                    点击购买
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

@@ -17,29 +17,36 @@ export default function Bill() {
     });
   }, [orderId]);
   return (
-    <div className="main">
-      <div className="order-info">
-        <h1>订单详情</h1>
-        <ul>
-          <li>电影院名{bill.cinemaName}</li>
-          <li>Name: {bill.movieName}</li>
-          <li>Movie schedule: {bill.movieSchedule}</li>
-          <li>Seating arrangement: {bill.seating}</li>
-          <li>Payment Amount: {bill.price} rmb</li>
-        </ul>
-      </div>
-
-      <div>
-        <div className="partner-info">
-          <h1>Partner Information</h1>
-          <ul>
-            <li>Partner: {bill.partnerName}</li>
-            <li>Gender: {bill.partnerGender}</li>
-            <li>Partner Telephone: {bill.partnerTelephone}</li>
-          </ul>
+    <div className="bill-main">
+      <div className="bill-message">
+        <div className="order-info">
+          <h1>订单详情</h1>
+          <div className="info-partner">
+            <ul>
+              <li>电影院名：{bill.cinemaName}</li>
+              <li>电影名: {bill.movieName}</li>
+              <li>场次: {bill.movieSchedule}</li>
+              <li>座位: {bill.seating}</li>
+              <li>支付费用: {bill.price} 元</li>
+            </ul>
+          </div>
         </div>
+        <div className="partner-info">
+          <h1>同伴信息</h1>
+          <div className="info-partner">
+            <ul>
+              <li>同伴名: {bill.partnerName}</li>
+              <li>性别: {bill.partnerGender}</li>
+              <li>同伴电话: {bill.partnerTelephone}</li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+      <div className="ticket-code-box">
         <div className="ticket-code">
-          <QRCode value={bill.ticketCode} size={100} />
+          <h1>取票码</h1>
+          <QRCode value={bill.ticketCode} size={150} />
         </div>
       </div>
     </div>
