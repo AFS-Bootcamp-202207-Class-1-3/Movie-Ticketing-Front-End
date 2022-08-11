@@ -23,6 +23,7 @@
   height: 450px;
 }
 .movie-card {
+  max-width: 400px;
   min-width: 180px;
 }
 .movie-card .ant-card {
@@ -31,11 +32,24 @@
 .movie-card .ant-card-cover {
   cursor: pointer;
 }
+.movie-card .ant-card-cover img {
+  max-width: 400px;
+  width: 100%;
+  height: 500px;
+}
 .movie-card:hover {
   transform: translateY(-5px);
   transition: 0.5s all;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
+.ant-card-meta-detail {
+  width: 100%;
+}
 .ant-card-meta-description {
+  width: 100%;
   height: 60px;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

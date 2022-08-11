@@ -7,21 +7,21 @@ import { useEffect, useState } from "react";
 
 export default function Bill() {
   const {
-    state: { orderId },
+    state: { orderId }
   } = useLocation();
 
   const [bill, setBill] = useState({});
   useEffect(() => {
-    getBill(orderId).then((response) => {
+    getBill(orderId).then(response => {
       setBill(response.data);
     });
   }, [orderId]);
   return (
     <div className="main">
       <div className="order-info">
-        <h1>Order Information</h1>
+        <h1>订单详情</h1>
         <ul>
-          <li>Cinema Name: {bill.cinemaName}</li>
+          <li>电影院名{bill.cinemaName}</li>
           <li>Name: {bill.movieName}</li>
           <li>Movie schedule: {bill.movieSchedule}</li>
           <li>Seating arrangement: {bill.seating}</li>
