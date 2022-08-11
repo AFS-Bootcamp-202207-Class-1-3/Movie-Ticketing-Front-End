@@ -13,8 +13,8 @@ export default function SelectCinemaAndViewingTime() {
   const { Option } = Select;
   const [cinemaData, setCinemaData] = useState([]);
   const [startTimeData, setStartTimeData] = useState([]);
-  const [choseMovieSchedule, setChoseMovieSchedule] = useState(1);
-  const [choseCinema, setChoseCinema] = useState(1);
+  const [choseMovieSchedule, setChoseMovieSchedule] = useState("");
+  const [choseCinema, setChoseCinema] = useState("");
   const {
     state: { movieId }
   } = useLocation();
@@ -25,9 +25,9 @@ export default function SelectCinemaAndViewingTime() {
     });
   }, []);
   const nav = useNavigate();
-  const handleCinemaChange = value => {
-    setChoseCinema(value);
-    getStartTime(value).then(response => {
+  const handleCinemaChange = cinemaId => {
+    setChoseCinema(cinemaId);
+    getStartTime(cinemaId, movieId).then(response => {
       setStartTimeData(response.data);
     });
   };

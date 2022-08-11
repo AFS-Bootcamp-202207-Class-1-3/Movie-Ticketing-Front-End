@@ -16,7 +16,6 @@ function Login() {
   const isLogin = () => {
     //判断是否登录
     const loginUser = memoryUtils.user;
-    console.log(loginUser);
     const userEmpty = JSON.stringify(loginUser) === "{}";
     const currentTime = new Date();
     if (
