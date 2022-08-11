@@ -9,19 +9,20 @@ import Logo from "./assets/logo.svg";
 const { Header, Content, Footer } = Layout;
 
 const userLocalStroage = JSON.parse(localStorage.getItem("user_key"));
-const nickName = userLocalStroage==null?"":userLocalStroage.userInfo.nickName;
-const avatarUrl = userLocalStroage==null?"":userLocalStroage.userInfo
-  .avatarUrl;
+const nickName =
+  userLocalStroage == null ? "" : userLocalStroage.userInfo.nickName;
+const avatarUrl =
+  userLocalStroage == null ? "" : userLocalStroage.userInfo.avatarUrl;
 const generateLabel = (path, itemName) => {
   return <Link to={path}>{itemName}</Link>;
 };
 
 const items = [
-  { key: "Home", title: "首页", label: generateLabel("/User/Home", "Home") },
+  { key: "首页", title: "首页", label: generateLabel("/User/Home", "首页") },
   {
-    key: "Orders",
+    key: "我的订单",
     title: "我的订单",
-    label: generateLabel("/User/MyOrder", "Orders")
+    label: generateLabel("/User/MyOrder", "我的订单")
   }
 ];
 
