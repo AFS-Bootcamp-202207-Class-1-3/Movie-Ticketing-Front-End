@@ -13,7 +13,9 @@ export default function MovieCard({ movieInfo }) {
           <img
             alt="moviephoto"
             src={movieInfo.postUrl}
-            style={{ cursor: "pointer" }}
+            style={{
+              cursor: "pointer",
+            }}
             onClick={() => {
               nav("/User/MovieDetail", {
                 replace: true,

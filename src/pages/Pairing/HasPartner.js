@@ -1,26 +1,25 @@
 import PairingPagination from "./PairingPagination";
-import { Button, List, Avatar, Badge, Popconfirm, Affix, message } from "antd";
+import { Button, List, Avatar, Badge, Popconfirm, message } from "antd";
 import {
   ManOutlined,
   WomanOutlined,
-  PlusCircleTwoTone,
-  ReloadOutlined,
+  PlusCircleTwoTone
 } from "@ant-design/icons";
 import { postPairInfo } from "../../api/PairingApi";
 import { useNavigate } from "react-router-dom";
+import "./Pairing.css";
 export default function HasPartner(props) {
   const { movieScheduleId, movieId, cinemaId, userId } = props;
   const nav = useNavigate();
-  const confirm = (pairInfo) => {
-    //Todo
+  const confirm = pairInfo => {
     postPairInfo({
       userId,
       partnerId: pairInfo.id,
       movieScheduleId,
       movieId,
-      cinemaId,
+      cinemaId
     })
-      .then((response) => {
+      .then(response => {
         const orderInfo = response.data;
         nav("/User/OrderDetail", { state: { orderId: orderInfo.id } });
       })
@@ -29,19 +28,13 @@ export default function HasPartner(props) {
       });
   };
   return (
-    <div>
-      <Affix offsetTop={10}>
-        <Button
-          type="text"
-          icon={<ReloadOutlined />}
-          onClick={props.handlePairInfo}
-        />
-      </Affix>
+    <div className="has-partner">
       <List
         itemLayout="vertical"
         dataSource={props.pairInfos}
-        renderItem={(pairInfo) => (
+        renderItem={pairInfo => (
           <List.Item
+            className="list-item"
             extra={
               <Popconfirm
                 title="确定选择这个同伴吗?"
@@ -51,17 +44,22 @@ export default function HasPartner(props) {
                 okText="Yes"
                 cancelText="No"
               >
-                <Button
-                  type="text"
-                  shape="circle"
-                  icon={<PlusCircleTwoTone twoToneColor="pink" />}
-                ></Button>
+                <div className="add-partner">
+                  <Button
+                    type="text"
+                    shape="circle"
+                    size={"large"}
+                    icon={<PlusCircleTwoTone twoToneColor="red" />}
+                  ></Button>
+                </div>
               </Popconfirm>
             }
           >
             <List.Item.Meta
+              className="list-item-meta"
               avatar={
                 <Badge
+                  className="list-item-avatar-badge"
                   count={
                     pairInfo.gender === "male" ? (
                       <ManOutlined />
@@ -70,19 +68,33 @@ export default function HasPartner(props) {
                     )
                   }
                 >
-                  <Avatar src={pairInfo.avatarUrl} />
+                  <Avatar
+                    src={pairInfo.avatarUrl}
+                    className="list-item-avatar"
+                  />
                 </Badge>
               }
               title={
-                <span>
+                <span className="list-item-meta-name">
                   {pairInfo.nickName}
-                  <font style={{ marginLeft: "10px" }}>
+                  <font
+                    style={{
+                      marginLeft: "10px",
+                      fontSize: "15px",
+                      fontWeight: "900",
+                      color: "gray"
+                    }}
+                  >
                     {" "}
-                    age:{pairInfo.age}
+                    age: {pairInfo.age}
                   </font>
                 </span>
               }
-              description={<span>{pairInfo.introduction}</span>}
+              description={
+                <span className="list-item-description">
+                  {pairInfo.introduction}
+                </span>
+              }
             />
           </List.Item>
         )}

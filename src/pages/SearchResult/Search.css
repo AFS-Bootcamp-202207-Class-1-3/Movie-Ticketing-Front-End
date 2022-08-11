@@ -1,3 +1,45 @@
+.no-result-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 75vh;
+}
+
+.no-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.no-result-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.no-result-info div {
+  font-size: 30px;
+  margin: 20px auto;
+}
+.big-Logo {
+  display: flex;
+  justify-content: center;
+}
+
+.big-Logo img {
+  width: 150px;
+  height: 150px;
+}
+
+.big-Logo span {
+  display: inline-block;
+  margin-left: 30px;
+  font-size: 80px;
+  color: black;
+}
+
 .movie-home {
   display: flex;
   flex-direction: column;
@@ -10,7 +52,7 @@
 }
 
 .movie-list {
-  width: 80%;
+  width: 80vw;
   margin: 30px;
 }
 
@@ -25,6 +67,7 @@
 .movie-card {
   max-width: 400px;
   min-width: 180px;
+  max-height: 700px;
 }
 .movie-card .ant-card {
   width: 100%;
@@ -53,3 +96,4 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+

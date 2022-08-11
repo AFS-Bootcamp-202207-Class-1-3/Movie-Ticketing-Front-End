@@ -13,8 +13,8 @@ export default function SelectCinemaAndViewingTime() {
   const { Option } = Select;
   const [cinemaData, setCinemaData] = useState([]);
   const [startTimeData, setStartTimeData] = useState([]);
-  const [choseMovieSchedule, setChoseMovieSchedule] = useState(1);
-  const [choseCinema, setChoseCinema] = useState(1);
+  const [choseMovieSchedule, setChoseMovieSchedule] = useState("");
+  const [choseCinema, setChoseCinema] = useState("");
   const {
     state: { movieId }
   } = useLocation();
@@ -25,9 +25,11 @@ export default function SelectCinemaAndViewingTime() {
     });
   }, []);
   const nav = useNavigate();
-  const handleCinemaChange = value => {
-    setChoseCinema(value);
-    getStartTime(value).then(response => {
+  const handleCinemaChange = cinemaID => {
+    setChoseCinema(cinemaID);
+    setChoseMovieSchedule("");
+    setStartTimeData([]);
+    getStartTime(cinemaID, movieId).then(response => {
       setStartTimeData(response.data);
     });
   };
@@ -38,7 +40,7 @@ export default function SelectCinemaAndViewingTime() {
 
   const ButtonTo = path => {
     if (choseCinema === "" || choseMovieSchedule === "") {
-      alert("请先选择！");
+      message.info("请选择电影院和场次！")
       return;
     }
     //点击确定后判断是否已经存在相同场次订单，如果是则跳转到对应订单详情页
