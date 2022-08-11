@@ -5,7 +5,10 @@ export default function UserAuthRoute({ children }) {
     //判断是否登录
     const loginUser = memoryUtils.user;
     const currentTime = new Date();
-    if (parseInt(currentTime - loginUser.date) > loginUser.expire) {
+    if (
+      loginUser.date == null ||
+      parseInt(currentTime - loginUser.date) > loginUser.expire
+    ) {
       return false;
     }
     return true;

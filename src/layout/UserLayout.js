@@ -4,7 +4,6 @@ import { LogoutOutlined } from "@ant-design/icons";
 // add input
 import { Layout, Menu, Avatar, Input, message } from "antd";
 import Logo from "./assets/logo.svg";
-
 const { Search } = Input;
 
 const { Header, Content, Footer } = Layout;
@@ -26,6 +25,10 @@ const items = [
     label: generateLabel("/User/MyOrder", "我的订单")
   }
 ];
+const logout = () => {
+  localStorage.removeItem("user_key");
+  window.location.reload();
+};
 
 export default function BasicLayout() {
   const nav = useNavigate();
@@ -60,7 +63,14 @@ export default function BasicLayout() {
             <div className="user">
               <Avatar src={avatarUrl} />
               <span className="user-name">{nickName}</span>
-              <LogoutOutlined style={{ color: 'red' }} />
+              <LogoutOutlined
+                style={{
+                  color: "white",
+                  cursor: "pointer",
+                  marginLeft: "25px"
+                }}
+                onClick={logout}
+              />
             </div>
           </div>
         </div>
