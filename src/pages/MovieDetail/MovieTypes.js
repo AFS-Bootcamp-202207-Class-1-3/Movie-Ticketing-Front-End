@@ -1,5 +1,4 @@
 export default function MovieTypes(props) {
-  console.log(props);
   return (
     <div className="movie-types">
       电影类型:
