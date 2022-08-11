@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 // add input
 import { Layout, Menu, Avatar } from "antd";
+
 import "./Layout.css";
 import Logo from "./assets/logo.svg";
 

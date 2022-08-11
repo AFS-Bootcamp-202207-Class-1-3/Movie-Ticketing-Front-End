@@ -27,7 +27,7 @@ function Login() {
     }
     return true;
   };
-  const loginMaintainTime = 3 * 60 * 1000;
+  const loginMaintainTime = 60 * 60 * 1000;
 
   const onFinish = values => {
     const request = {

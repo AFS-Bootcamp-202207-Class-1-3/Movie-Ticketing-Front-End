@@ -1,5 +1,5 @@
 const { createProxyMiddleware } = require("http-proxy-middleware")
-const baseURL = "https://back-end-movie-qa.herokuapp.com/";
+const baseURL = " http://localhost:8080";
 module.exports = function(app) {
   app.use(
     // 代理标识

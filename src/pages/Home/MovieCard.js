@@ -9,9 +9,6 @@ export default function MovieCard({ movieInfo }) {
   return (
     <div className="movie-card">
       <Card
-        style={{
-          width: 300,
-        }}
         cover={
           <img
             alt="moviephoto"
@@ -20,7 +17,7 @@ export default function MovieCard({ movieInfo }) {
             onClick={() => {
               nav("/User/MovieDetail", {
                 replace: true,
-                state: { movieId: movieInfo.id },
+                state: { movieId: movieInfo.id }
               });
             }}
           />
@@ -31,12 +28,12 @@ export default function MovieCard({ movieInfo }) {
             onClick={() => {
               nav("/User/MovieDetail", {
                 replace: true,
-                state: { movieId: movieInfo.id },
+                state: { movieId: movieInfo.id }
               });
             }}
           >
             More Detail
-          </Button>,
+          </Button>
         ]}
       >
         <Meta title={movieInfo.name} description={movieInfo.introduction} />
